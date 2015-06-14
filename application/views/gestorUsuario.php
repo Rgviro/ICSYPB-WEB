@@ -66,10 +66,10 @@ li {
 </head>
 <body>
 	<li><x href="/index.php/gestorUsuarios/gestorUsr">USUARIOS</x></li>
-	<li><x href="/index.php/gestorGrupos/gestorGrpGtr">GRUPOS-GESTORES</x></li>
-	<li><x href="/index.php/gestorGrupos/gestorGrpUsr">GRUPOS-USUARIOS</x></li>
-	<li><x href="/index.php/gestorConvocatorias/gestorConv">ZONAS</x></li>
-	<li><x href="/index.php/gestorNotificaciones/gestorNotif">NOTIFICACIONES</x></li>
+    <li><x href="/index.php/gestorGestores/gestorGtr">GESTORES</x></li>
+    <li><x href="/index.php/gestorBalizas/gestorBlz">BALIZAS</x></li>
+    <li><x href="/index.php/gestorRutas/gestorRuta">RUTAS</x></li>
+    <br>
     <br>
  
     

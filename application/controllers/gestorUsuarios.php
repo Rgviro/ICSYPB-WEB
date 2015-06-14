@@ -42,21 +42,24 @@ class gestorUsuarios extends CI_Controller {
 		    $crud->set_table('usuario');
 		    
 		    //Modificamos display de columnas
-		    $crud->display_as('ID_TIPO','ROL');
+		    
 		    $crud->display_as('USER','USUARIO');
 		    $crud->display_as('NOMBRE','NOMBRE');	     
 		    $crud->display_as('APELLIDO1','PRIMER APELLIDO');
 		    $crud->display_as('APELLIDO2','SEGUNDO APELLIDO');
-		    
+		    $crud->display_as('ID_TIPO','ROL');
+		    $crud->display_as('EMAIL','E MAIL');
+		    $crud->display_as('TFNO','TELEFONO');
+		    $crud->display_as('PASSWD','CLAVE');
 	   
 		    //Establecemos relacion.
-		   // $crud->set_relation('ID_TIPO','TIPOUSUARIO','IDTIPO');
-	
+		   // $crud->set_relation('ID_TIPO','tipousuario','IDTIPO');
+		 	
 		    //Nomber que aparece al lado de Añadir
 		    $crud->set_subject('Usuario');
 		    
 		    //Indicamos los campos obligatorios
-		    $crud->required_fields('USER','NOMBRE','ID_TIPO','EMAIL', 'TFNO','PASWD' );
+		    $crud->required_fields('USER','NOMBRE','EMAIL', 'TFNO','PASWD');
 	
 		    
 		    //Validaciones sobre los campos
@@ -64,27 +67,24 @@ class gestorUsuarios extends CI_Controller {
 		    $crud->set_rules('NOMBRE','Nombre','trim|required|min_length[5]|max_length[20]');
 		    $crud->set_rules('APELLIDO1','Primer apellido','trim|max_length[30]');
 		    $crud->set_rules('APELLIDO2','Segundo apellido','trim|max_length[30]');
-		    $crud->set_rules('ID_TIPO','Rol','required');
+		    $crud->set_rules('ID_TIPO','ID_TIPO','required');
 		    $crud->set_rules('EMAIL','Email','trim|required|valid_email');
 		    $crud->set_rules('TFNO','Telefono','trim|required|exact_length[9]');	    
 		    $crud->set_rules('PASSWD','Password','trim|required|min_length[5]|max_length[20]');
 		    	    
-	    
-		    //Valores para el campo ATIVO
-		    //$crud->field_type('ACTIVO','dropdown',
-		    //		array('SI' => 'SI', 'NO' => 'NO'));
-		    
+	    //Establecemos relacion.
+		    $crud->set_relation('ID_TIPO','tipousuario','IDTIPO');
+		    //Valores para el campo tipo
+		    //$crud->field_type('ID_TIPO','dropdown',
+		   	//	array('1' => '1', '2' => '2', '3' => '3'));
+		    //
 		    //Ocultamos las fechas para que no salgan en el alta o modificacoin
 		    
 		    $crud->change_field_type('PASSWD', 'password');
 		    
 		    
-		    $crud->fields('USER','NOMBRE','APELLIDO1','APELLIDO2','IDTIPO','EMAIL','TFNO', 'PASSWORD');
-		    $crud->callback_before_insert(array($this,'get_date_insert'));
-		    $crud->callback_before_update(array($this,'get_date_update'));
-		    $crud->callback_before_insert(array($this,'encrypt_password_callback'));	    
-		    $crud->callback_before_update(array($this,'encrypt_password_callback'));
-		     
+		    $crud->fields('USER','NOMBRE','APELLIDO1','APELLIDO2','IDTIPO','EMAIL','TFNO', 'PASSWD');
+		    
 		    //Deshabilitamos el boton borrar, solo hacemos borrado logico
 		    $crud->unset_delete();
 		    
@@ -100,7 +100,7 @@ class gestorUsuarios extends CI_Controller {
     	//$this->load->library('encrypt');
     	//$key = 'super-secret-key';
     	//$post_array['password'] = $this->encrypt->encode($post_array['password'], $key);
-    	$post_array['PASSWORD'] =sha1($post_array['PASSWORD']); 
+    	$post_array['PASSWD'] =sha1($post_array['PASSWD']); 
     
     	return $post_array;
     }

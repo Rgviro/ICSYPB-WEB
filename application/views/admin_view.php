@@ -38,21 +38,14 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gesti&oacute;n de Zonas <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
                 <li><a href='gestorZonas/gestorZona'>Gestores de Zona</a></li>
-                <li><a href='gestorZonas/gestorBlzZona'>Balizas a Zona</a></li>                  
+                <li><a href='gestorZonasBalizas/gestorBlzZona'>Balizas a Zona</a></li>                  
               </ul>
             </li>
-            <li><a href='gestorBalizas/gestorBlz'>Gesti&oacute;n de Balizas</a></li>
-            <li class="divider"></li>
-            <li><a href='gestorBalizas/gestorBlz'>Balizas</a></li>
-            <li><a href='gestorBalizas/gestorBlz'>Estadisticas</a></li>
-            <li class="divider"></li>
-            <li class="dropdown">            
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Zonas <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-                <li><a href='gestorUsuario/gestorConvActivas'>Activas</a></li>
-                <li><a href='gestorUsuario/gestorConvNoActivas'>Hist&oacute;rico</a></li> 
-              </ul>
-            </li>
+            <li><a href='gestorBalizas/gestorBlz'>Gesti&oacute;n de Balizas</a></li>           
+            <li><a href='balizas/mostrarBlz'>Balizas</a></li>
+            <li><a href='zonas/mostrarZona'>Zonas</a></li>
+            <li><a href='estadisticas/mostrarEstadistica'>Estadisticas</a></li>
+            <li class="divider"></li>            
           <li> 
           <ul class="nav navbar-nav navbar-right">
             <li><a href="../navbar/">Acceso</a></li>

@@ -67,7 +67,7 @@ li {
 <body>
 	<li><x href="/index.php/gestorUsuarios/gestorUsr">USUARIOS</x></li>
 	<li><x href="/index.php/gestorGestores/gestorGtr">GESTORES</x></li>
-	<li><x href="/index.php/gestorBalizas/gestorBlz">BALIZAS</x></li>
+	<li><x href="/gestorBalizas/mostrarBlz">BALIZAS</x></li>
 	<li><x href="/index.php/gestorRutas/gestorRuta">RUTAS</x></li>
 	<br>
     <br>
