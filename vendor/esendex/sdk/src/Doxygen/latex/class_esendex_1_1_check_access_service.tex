@@ -1,0 +1,88 @@
+\section{Esendex\textbackslash{}Check\-Access\-Service Class Reference}
+\label{class_esendex_1_1_check_access_service}\index{Esendex\textbackslash{}\-Check\-Access\-Service@{Esendex\textbackslash{}\-Check\-Access\-Service}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries \-\_\-\-\_\-construct} ({\bf Http\textbackslash{}\-I\-Http} \$http\-Client=null)\label{class_esendex_1_1_check_access_service_ae800a5fd028d730f798aa297b92eb06a}
+
+\item 
+{\bf check\-Access} (\$account\-Reference, \$username, \$password)
+\item 
+{\bf check\-Session\-Access} ({\bf Authentication\textbackslash{}\-Session\-Authentication} \$authentication)
+\item 
+{\bf check\-Authentication\-Access} ({\bf Authentication\textbackslash{}\-I\-Authentication} \$authentication)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const {\bfseries S\-E\-R\-V\-I\-C\-E} = \char`\"{}accounts\char`\"{}\label{class_esendex_1_1_check_access_service_ab9d205a478dda73e534c33e600000551}
+
+\item 
+const {\bfseries S\-E\-R\-V\-I\-C\-E\-\_\-\-V\-E\-R\-S\-I\-O\-N} = 'v1.\-0'\label{class_esendex_1_1_check_access_service_ad03c4c0311b54b913607db4ec91ef59c}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\index{Esendex\-::\-Check\-Access\-Service@{Esendex\-::\-Check\-Access\-Service}!check\-Access@{check\-Access}}
+\index{check\-Access@{check\-Access}!Esendex::CheckAccessService@{Esendex\-::\-Check\-Access\-Service}}
+\subsubsection[{check\-Access}]{\setlength{\rightskip}{0pt plus 5cm}Esendex\textbackslash{}\-Check\-Access\-Service\-::check\-Access (
+\begin{DoxyParamCaption}
+\item[{}]{\$account\-Reference, }
+\item[{}]{\$username, }
+\item[{}]{\$password}
+\end{DoxyParamCaption}
+)}\label{class_esendex_1_1_check_access_service_a401a8cc5449a630798ffa4072166561a}
+Check that your username, password and account reference is valid
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$account\-Reference} & \\
+\hline
+string & {\em \$username} & \\
+\hline
+string & {\em \$password} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\index{Esendex\-::\-Check\-Access\-Service@{Esendex\-::\-Check\-Access\-Service}!check\-Authentication\-Access@{check\-Authentication\-Access}}
+\index{check\-Authentication\-Access@{check\-Authentication\-Access}!Esendex::CheckAccessService@{Esendex\-::\-Check\-Access\-Service}}
+\subsubsection[{check\-Authentication\-Access}]{\setlength{\rightskip}{0pt plus 5cm}Esendex\textbackslash{}\-Check\-Access\-Service\-::check\-Authentication\-Access (
+\begin{DoxyParamCaption}
+\item[{{\bf Authentication\textbackslash{}\-I\-Authentication}}]{\$authentication}
+\end{DoxyParamCaption}
+)}\label{class_esendex_1_1_check_access_service_a3518f582300d3083be89ac8695365885}
+Check that any authentication is valid
+
+
+\begin{DoxyParams}[1]{Parameters}
+Authentication\textbackslash{}\-I\-Authentication & {\em \$authentication} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\index{Esendex\-::\-Check\-Access\-Service@{Esendex\-::\-Check\-Access\-Service}!check\-Session\-Access@{check\-Session\-Access}}
+\index{check\-Session\-Access@{check\-Session\-Access}!Esendex::CheckAccessService@{Esendex\-::\-Check\-Access\-Service}}
+\subsubsection[{check\-Session\-Access}]{\setlength{\rightskip}{0pt plus 5cm}Esendex\textbackslash{}\-Check\-Access\-Service\-::check\-Session\-Access (
+\begin{DoxyParamCaption}
+\item[{{\bf Authentication\textbackslash{}\-Session\-Authentication}}]{\$authentication}
+\end{DoxyParamCaption}
+)}\label{class_esendex_1_1_check_access_service_a5dd9bbbeb52a6f33ac0a6bd91b46ff7d}
+Check if a session is valid, a valid session I\-D might have timed out and have been deleted. By calling this method the session will be 'kept alive'
+
+
+\begin{DoxyParams}[1]{Parameters}
+Authentication\textbackslash{}\-Session\-Authentication & {\em \$authentication} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Esendex/Check\-Access\-Service.\-php\end{DoxyCompactItemize}

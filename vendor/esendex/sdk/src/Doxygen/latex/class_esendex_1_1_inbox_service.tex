@@ -1,0 +1,84 @@
+\section{Esendex\textbackslash{}Inbox\-Service Class Reference}
+\label{class_esendex_1_1_inbox_service}\index{Esendex\textbackslash{}\-Inbox\-Service@{Esendex\textbackslash{}\-Inbox\-Service}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \-\_\-\-\_\-construct} ({\bf Authentication\textbackslash{}\-I\-Authentication} \$authentication, {\bf Http\textbackslash{}\-I\-Http} \$http\-Client=null, {\bf Parser\textbackslash{}\-Inbox\-Xml\-Parser} \$parser=null)
+\item 
+{\bf latest} (\$start\-Index=null, \$count=null)
+\item 
+{\bf delete\-Inbox\-Message} (\$message\-Id)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const {\bfseries I\-N\-B\-O\-X\-\_\-\-S\-E\-R\-V\-I\-C\-E} = 'inbox'\label{class_esendex_1_1_inbox_service_a1a5b3733b4a19286e30a99960fdcc9b8}
+
+\item 
+const {\bfseries I\-N\-B\-O\-X\-\_\-\-S\-E\-R\-V\-I\-C\-E\-\_\-\-V\-E\-R\-S\-I\-O\-N} = 'v1.\-0'\label{class_esendex_1_1_inbox_service_acd36b9c2d30cde020324cb560f03f3dd}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Esendex\-::\-Inbox\-Service@{Esendex\-::\-Inbox\-Service}!\-\_\-\-\_\-construct@{\-\_\-\-\_\-construct}}
+\index{\-\_\-\-\_\-construct@{\-\_\-\-\_\-construct}!Esendex::InboxService@{Esendex\-::\-Inbox\-Service}}
+\subsubsection[{\-\_\-\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}Esendex\textbackslash{}\-Inbox\-Service\-::\-\_\-\-\_\-construct (
+\begin{DoxyParamCaption}
+\item[{{\bf Authentication\textbackslash{}\-I\-Authentication}}]{\$authentication, }
+\item[{{\bf Http\textbackslash{}\-I\-Http}}]{\$http\-Client = {\ttfamily null}, }
+\item[{{\bf Parser\textbackslash{}\-Inbox\-Xml\-Parser}}]{\$parser = {\ttfamily null}}
+\end{DoxyParamCaption}
+)}\label{class_esendex_1_1_inbox_service_afb92bec1ed38e8789087a249a2e4b4f8}
+
+\begin{DoxyParams}[1]{Parameters}
+Authentication\textbackslash{}\-I\-Authentication & {\em \$authentication} & \\
+\hline
+Http\textbackslash{}\-I\-Http & {\em \$http\-Client} & \\
+\hline
+Parser\textbackslash{}\-Inbox\-Xml\-Parser & {\em \$parser} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Esendex\-::\-Inbox\-Service@{Esendex\-::\-Inbox\-Service}!delete\-Inbox\-Message@{delete\-Inbox\-Message}}
+\index{delete\-Inbox\-Message@{delete\-Inbox\-Message}!Esendex::InboxService@{Esendex\-::\-Inbox\-Service}}
+\subsubsection[{delete\-Inbox\-Message}]{\setlength{\rightskip}{0pt plus 5cm}Esendex\textbackslash{}\-Inbox\-Service\-::delete\-Inbox\-Message (
+\begin{DoxyParamCaption}
+\item[{}]{\$message\-Id}
+\end{DoxyParamCaption}
+)}\label{class_esendex_1_1_inbox_service_abbe6fda469c6d384a81a0108ca2ae5c9}
+Delete an inbox message using it's message\-Id
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$message\-Id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\index{Esendex\-::\-Inbox\-Service@{Esendex\-::\-Inbox\-Service}!latest@{latest}}
+\index{latest@{latest}!Esendex::InboxService@{Esendex\-::\-Inbox\-Service}}
+\subsubsection[{latest}]{\setlength{\rightskip}{0pt plus 5cm}Esendex\textbackslash{}\-Inbox\-Service\-::latest (
+\begin{DoxyParamCaption}
+\item[{}]{\$start\-Index = {\ttfamily null}, }
+\item[{}]{\$count = {\ttfamily null}}
+\end{DoxyParamCaption}
+)}\label{class_esendex_1_1_inbox_service_aff1d0ca23ba4e72f10f60202eaa8bb2d}
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$start\-Index} & \\
+\hline
+int & {\em \$count} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Model 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Esendex/Inbox\-Service.\-php\end{DoxyCompactItemize}

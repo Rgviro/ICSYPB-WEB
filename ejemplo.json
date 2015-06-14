@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "descripcion": "Prueba de ruta 1",
+    "balizas": [
+      {
+        "id": 1,
+        "texto_id": "Prueba de texto_id de baliza 1",
+        "mac": "AA:BB:CC:DD:EE:F1",
+        "posicion": 1,
+        "id_contacto": "1",
+        "estropeado": "false",
+        "mail": "baliza1@prueba.com"
+      },
+      {
+        "id": 2,
+        "texto_id": "Prueba de texto_id de baliza 2",
+        "mac": "AA:BB:CC:DD:EE:F2",
+        "posicion": 2,
+        "id_contacto": "2",
+        "estropeado": "false",
+        "mail": "baliza1@prueba.com"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "descripcion": "Prueba de ruta 2",
+    "balizas": [
+      {
+        "id": 3,
+        "texto_id": "Prueba de texto_id de baliza 3",
+        "mac": "AA:BB:CC:DD:EE:F3",
+        "posicion": 3,
+        "id_contacto": "3",
+        "estropeado": "false",
+        "mail": "baliza1@prueba.com"
+      },
+      {
+        "id": 4,
+        "texto_id": "Prueba de texto_id de baliza 4",
+        "mac": "AA:BB:CC:DD:EE:F4",
+        "posicion": 4,
+        "id_contacto": "4",
+        "estropeado": "false",
+        "mail": "baliza1@prueba.com"
+      }
+    ]
+  }
+]
