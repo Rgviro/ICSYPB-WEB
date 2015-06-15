@@ -1,5 +1,49 @@
-{
-    "require": {
-        "esendex/sdk": "1.0.*"
-	}
+
+<?php
+// ref: http://www.kodingmadesimple.com/2014/12/how-to-insert-json-data-into-mysql-php.html
+// Conectarse a la BBDD
+
+    $con = mysql_connect("ICSYPB","ICSYPB","") or die('Could not connect: ' . mysql_error());
+    mysql_select_db("icsypbdb", $con);
+//leer el contenido del JSON
+    $jsondata = file_get_contents('empdetails.json');
+//convert json object to php associative array
+    $data = json_decode($jsondata, true);
+
+//obtener valores
+foreach($data as $obj){
+	$pmac= $obj->'mac_usuario';
+    $bmac = $obj->'mac_baliza';
+    $fecha_actual = $obj->'fecha_actual';
+    $id_baliza = $obj->'id_baliza';
+    $id_ruta = $obj->'id_ruta';
+//insertcion mysql
+    $sql = "INSERT INTO tracking (MACUSUARIO, ID_RUTA, ID_BALIZA, MAC_BALIZA, FECHA)
+    VALUES('$pmac', '$id_ruta', '$id_baliza',  $bmac', '$fecha_actual')";
+    if(!mysql_query($sql,$con))
+    {
+        die('Error : ' . mysql_error());
+    }
+        
+       // echo $id_fruta." ".$nombre_fruta." ".$cantidad;
+       // echo "";
+
 }
+	//$pmac= $data['mac_usuario'];
+   // $bmac = $data['mac_baliza'];
+   // $fecha_actual = $data['fecha_actual'];
+   // $id_baliza = $data['id_baliza'];
+   // $id_ruta = $data['id_ruta'];
+
+/*
+String mac_usuario;
+String mac_baliza;
+String fecha_actual;
+int id_baliza;
+int id_ruta;
+*/
+
+
+
+
+?>
