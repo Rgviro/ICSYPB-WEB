@@ -24,9 +24,7 @@ while($row = mysqli_fetch_array($result))
 { 
     $nombre=$row['DESCRIPCION']; 
     $id=$row['IDRUTA']; 
-   
- 
-	   $rutas[] = array('id'=> $id, 'descripcion'=> $nombre);
+	$rutas[] = array('id'=> $id, 'descripcion'=> $nombre);
 	}  
 	//desconectamos la base de datos
 $close = mysqli_close($conexion) 

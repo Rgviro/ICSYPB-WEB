@@ -16,7 +16,7 @@ $rutas = array(); //creamos un array para las rutas
 $balizas = array();//creamos un array para las balizas
 
 //generamos las consultas
-$sql = "SELECT * FROM ruta LEFT JOIN balizastojson ON ruta.IDRUTA = balizastojson.IDRUTA";
+$sql = "SELECT * FROM balizastojson2";
 mysqli_set_charset($conexion, "utf8"); //formato de datos utf8
 
  
@@ -27,26 +27,25 @@ mysqli_set_charset($conexion, "utf8"); //formato de datos utf8
  $buffer_rec_name ="";
  $buffer_rec_cat = "";
 
- while( $rutas = mysqli_fetch_array($result))
+ while( $row = mysqli_fetch_array($result))
  {
-/*echo $rutas[0];
-echo $rutas[1];
-echo $rutas[2];*/
- 	if( $buffer_rec_id != intval($rutas[0]) )
+
+ 	if( $buffer_rec_id != intval($row[0]) )
   {
-  	  $buffer_rec_id = $rutas[2];
-      $buffer_rec_name = $rutas[1]; 
-      $rutas[] = array( $buffer_rec_id, $buffer_rec_name, $balizas);
+  	  $buffer_rec_id = $row[2];
+      $buffer_rec_name = $row[1]; 
+      unset($balizas);
 
-      $balizas = array(  );
-
-          
+      $balizas[] =  array('idbaliza'=>  $row[3],'descripcion'=> $row[4],'mac'=>  $row[5],'posicion'=>  $row[6], 'idusuario'=> $row[7],'estropeado'=> $row[8] );
+	  $rutas[] = array( 'id'=> $buffer_rec_id, 'descripcion'=> $buffer_rec_name, $balizas);
+         
   }
   else
   {
-      $balizas[] = array( $rutas[3], $rutas[4], $rutas[5] );
+      $balizas[] =  array('idbaliza'=>  $row[3],'descripcion'=> $row[4],'mac'=>  $row[5],'posicion'=>  $row[6], 'idusuario'=> $row[7],'estropeado'=> $row[8] );
 
   }
+
  }
 
 /*
