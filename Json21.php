@@ -24,6 +24,9 @@ mysqli_set_charset($conexion, "utf8"); //formato de datos utf8
 //if(!$resouter = mysqli_query($conexion, $sql)) die();
  $result = mysqli_query($conexion, $sql);
  $buffer_rec_id = 0;
+ $id_anterior = 1;
+ $contbalizas = 0;
+ $contrutas = 0;
  $buffer_rec_name ="";
  $buffer_rec_cat = "";
 
@@ -32,22 +35,23 @@ mysqli_set_charset($conexion, "utf8"); //formato de datos utf8
 /*echo $rutas[0];
 echo $rutas[1];
 echo $rutas[2];*/
- 	if( $buffer_rec_id != intval($rutas[0]) )
-  {
-  	  $buffer_rec_id = $rutas[2];
-      $buffer_rec_name = $rutas[1]; 
-      $rutas[] = array( $buffer_rec_id, $buffer_rec_name, $balizas);
 
-      $balizas = array(  );
+while($row = mysqli_fetch_array($result)) 
+{ 
+if( $id_anterior != intval($rutas[0]) ){
+	
+    $rutas[$contrutas] = array( $buffer_rec_id, $buffer_rec_name, $balizas);
+	$buffer_rec_id = $rutas[0];
+    $buffer_rec_name = $rutas[1]; 
+    $contrutas = $contrutas + 1;
+}
+else{
+   	$balizas[$contbalizas] = array( $rutas[3], $rutas[4], $rutas[5], $rutas[6], $rutas[7], $rutas[8] , $rutas[9]  );
+	$contbalizas = $contbalizas +1;
+}
+}
+//------------------------------------
 
-          
-  }
-  else
-  {
-      $balizas[] = array( $rutas[3], $rutas[4], $rutas[5] );
-
-  }
- }
 
 /*
 $datoruta = array_fill_keys(array(
