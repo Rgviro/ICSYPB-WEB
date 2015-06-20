@@ -228,7 +228,7 @@ INSERT INTO `usuario` (`IDUSUARIO`, `USER`, `NOMBRE`, `APELLIDO1`, `APELLIDO2`, 
 --
 DROP TABLE IF EXISTS `jsonenvio1`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `jsonenvio1` AS (select `ruta`.`DESCRIPCION` AS `DESCRIPCION`,`ruta`.`IDRUTA` AS `IDRUTA`,`rutabaliza`.`ORDEN` AS `ORDEN`,`baliza`.`IDBALIZA` AS `IDBALIZA`,`baliza`.`TEXTO_ID` AS `TEXTO_ID`,`baliza`.`MAC` AS `MAC`,`baliza`.`POSICION` AS `POSICION`,`baliza`.`ID_CONTACTO` AS `ID_CONTACTO`,`baliza`.`ESTROPEADO` AS `ESTROPEADO`,`baliza`.`MAIL` AS `MAIL` from ((`ruta` left join `rutabaliza` on((`ruta`.`IDRUTA` = `rutabaliza`.`IDRUTA`))) left join `baliza` on((`rutabaliza`.`IDBALIZA` = `baliza`.`IDBALIZA`))) order by `ruta`.`IDRUTA`,`rutabaliza`.`ORDEN`,`baliza`.`IDBALIZA`);
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`ctcloud.sytes.net` SQL SECURITY DEFINER VIEW `jsonenvio1` AS (select `ruta`.`DESCRIPCION` AS `DESCRIPCION`,`ruta`.`IDRUTA` AS `IDRUTA`,`rutabaliza`.`ORDEN` AS `ORDEN`,`baliza`.`IDBALIZA` AS `IDBALIZA`,`baliza`.`TEXTO_ID` AS `TEXTO_ID`,`baliza`.`MAC` AS `MAC`,`baliza`.`POSICION` AS `POSICION`,`baliza`.`ID_CONTACTO` AS `ID_CONTACTO`,`baliza`.`ESTROPEADO` AS `ESTROPEADO`,`baliza`.`MAIL` AS `MAIL` from ((`ruta` left join `rutabaliza` on((`ruta`.`IDRUTA` = `rutabaliza`.`IDRUTA`))) left join `baliza` on((`rutabaliza`.`IDBALIZA` = `baliza`.`IDBALIZA`))) order by `ruta`.`IDRUTA`,`rutabaliza`.`ORDEN`,`baliza`.`IDBALIZA`);
 
 -- --------------------------------------------------------
 
@@ -237,7 +237,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `prueba`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `prueba` AS (select `ruta`.`DESCRIPCION` AS `DESCRIPCION`,`ruta`.`IDRUTA` AS `IDRUTA`,`rutabaliza`.`ORDEN` AS `ORDEN`,`baliza`.`IDBALIZA` AS `IDBALIZA`,`baliza`.`TEXTO_ID` AS `TEXTO_ID`,`baliza`.`MAC` AS `MAC`,`baliza`.`POSICION` AS `POSICION`,`baliza`.`ID_CONTACTO` AS `ID_CONTACTO`,`baliza`.`ESTROPEADO` AS `ESTROPEADO`,`baliza`.`MAIL` AS `MAIL` from ((`ruta` left join `rutabaliza` on((`ruta`.`IDRUTA` = `rutabaliza`.`IDRUTA`))) left join `baliza` on((`rutabaliza`.`IDBALIZA` = `baliza`.`IDBALIZA`))) order by `ruta`.`IDRUTA`,`rutabaliza`.`ORDEN`,`baliza`.`IDBALIZA`);
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`ctcloud.sytes.net` SQL SECURITY DEFINER VIEW `prueba` AS (select `ruta`.`DESCRIPCION` AS `DESCRIPCION`,`ruta`.`IDRUTA` AS `IDRUTA`,`rutabaliza`.`ORDEN` AS `ORDEN`,`baliza`.`IDBALIZA` AS `IDBALIZA`,`baliza`.`TEXTO_ID` AS `TEXTO_ID`,`baliza`.`MAC` AS `MAC`,`baliza`.`POSICION` AS `POSICION`,`baliza`.`ID_CONTACTO` AS `ID_CONTACTO`,`baliza`.`ESTROPEADO` AS `ESTROPEADO`,`baliza`.`MAIL` AS `MAIL` from ((`ruta` left join `rutabaliza` on((`ruta`.`IDRUTA` = `rutabaliza`.`IDRUTA`))) left join `baliza` on((`rutabaliza`.`IDBALIZA` = `baliza`.`IDBALIZA`))) order by `ruta`.`IDRUTA`,`rutabaliza`.`ORDEN`,`baliza`.`IDBALIZA`);
 
 --
 -- Índices para tablas volcadas

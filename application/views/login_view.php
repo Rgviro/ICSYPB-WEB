@@ -1,48 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="<?=base_url()?>css/960.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="<?=base_url()?>css/text.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="<?=base_url()?>css/reset.css" media="screen" />
-<style type="text/css">
-h1{
-	font-size: 22px;
-	text-align: center;
-	margin: 20px 0px;
-}
-#login{
-background: #fefefe;
-min-height: 500px;
-}
-#formulario_login{
-font-size: 14px;
-border: 4px solid #112233;
-}
-label{
-display: block;
-font-size: 16px;
-color: #333333;
-	font-weight: bold;
-}
-input[type=text],input[type=password]{
-padding: 10px 6px;
-width: 400px;
-}
-input[type=submit]{
-padding: 5px 40px;
-background: #61399d;
-color: #fff;
-}
-#campos_login{
-margin: 50px 0px;
-}
-	p{
-	color: #f00;
-	font-weight: bold;
-}
-</style>
-<link href="Themes/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="<?=base_url()?>assets/Images/upsam.ico"> 
+  <link href="<?=base_url()?>assets/CSS/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <script src="<?=base_url()?>assets/Javascript/jquery-1.11.2.min.js"></script>
+  <script src="<?=base_url()?>assets/Javascript/bootstrap.min.js"></script>
+  <link href="<?=base_url()?>assets/CSS/login.css" rel="stylesheet" type="text/css">
+  <meta name="description" content="ICSYPB - Track Your Way">
+  <meta name="author" content="Grupo 11">
 </head>
 <body>
 <?php
@@ -51,21 +19,34 @@ $password = array('name' => 'password',	'placeholder' => 'introduce tu password'
 	$submit = array('name' => 'submit', 'value' => 'Iniciar sesion', 'title' => 'Iniciar sesion');
 	?>
 	<div class="container_12">
-		<h1>ICSYPB</h1>
+		<h1 align = center>ICSYPB</h1>
+<!--
+     <form class="form-signin">
+        <h2 class="form-signin-heading">Acceso al sistema</h2>
+        <label for="inputUser" class="sr-only">Usuario</label>
+        <input type="user" id="inputUser" class="form-control" placeholder="Usuario" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </form>
+
+    </div>  -->
+
+
 		<div class="grid_12" id="login">
 			<div class="grid_8 push_2" id="formulario_login">
 				<div class="grid_6 push_1" id="campos_login">
 					<div align="center">
 					  <?=form_open(base_url().'login/new_user')?>
 				  </div>
-				  <label for="username">
-					  <div align="center" class="navbar-static"><strong>Nombre de usuario:</strong></div>
+				  <label for="username" >
+					  <div class="navbar-static" ><strong>Nombre de usuario:</strong></div>
 				  </label>
-					<div align="center">
+					<div align=center>
 					  <?=form_input($username)?>
 				  </div>
 					<p><?=form_error('username')?></p>
-					<label for="password" class="navbar-static">
+					<label for="password" class="navbar-static" >
 					  <div align="center"><strong>Introduce tu password:</strong></div>
 					</label>
 					<div align="center" class="input-xlarge">

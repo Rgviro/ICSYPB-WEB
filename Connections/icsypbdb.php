@@ -2,7 +2,7 @@
 # FileName="Connection_php_mysql.htm"
 # Type="MYSQL"
 # HTTP="true"
-$hostname_icsypbdb = "localhost:3306";
+$hostname_icsypbdb = "ctcloud.sytes.net:3306";
 $database_icsypbdb = "icsypbdb";
 $username_icsypbdb = "rafa";
 $password_icsypbdb = "ICSYPB";

@@ -1,6 +1,6 @@
 <?php 
  
-$server = "localhost";
+$server = "ctcloud.sytes.net";
 $user = "root";
 $pass = "";
 $bd = "icsypbdb";

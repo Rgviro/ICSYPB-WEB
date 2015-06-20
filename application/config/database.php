@@ -68,22 +68,7 @@ $db['localhost']['stricton'] = FALSE;
 
 
 
-/* icsypbdb */
-$db['icsypbdb']['hostname'] = 'ctcloud.sytes.net:667';
-$db['icsypbdb']['username'] = 'ICSYPB';
-$db['icsypbdb']['password'] = 'ICSYPB';
-$db['icsypbdb']['database'] = 'icsypbdb';
-$db['icsypbdb']['dbdriver'] = 'mysql';
-$db['icsypbdb']['dbprefix'] = '';
-$db['icsypbdb']['pconnect'] = TRUE;
-$db['icsypbdb']['db_debug'] = TRUE;
-$db['icsypbdb']['cache_on'] = FALSE;
-$db['icsypbdb']['cachedir'] = '';
-$db['icsypbdb']['char_set'] = 'utf8';
-$db['icsypbdb']['dbcollat'] = 'utf8_spanish_ci';
-$db['icsypbdb']['swap_pre'] = '';
-$db['icsypbdb']['autoinit'] = TRUE;
-$db['icsypbdb']['stricton'] = FALSE;
+
 
 /* PRODUCCION */
 $db['icsypbdb']['hostname'] = 'ctcloud.sytes.net:667';

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <site SitePrefVersionMajor="12" SitePrefVersionMinor="0">
-    <localinfo sitename="ICSYPBWS" ftporrdsserver="FALSE" mediaqueryfile="" localroot="D:%5CICSYPBWS%5C" assetfolder="D:%5CICSYPBWS%5Capplication%5Cviews%5CSpryAssets%5C" webfontsfolder="D:%5CICSYPBWS%5Capplication%5Cviews%5Cwebfonts%5C" imagefolder="" spacerfilepath="" refreshlocal="TRUE" rewritedocrellinks="FALSE" cache="TRUE" httpaddress="http://localhost/" relativeTo="DOCUMENT" caseSensitiveLinks="FALSE" curserver="webserver"/>
+    <localinfo sitename="ICSYPBWS" ftporrdsserver="FALSE" mediaqueryfile="" localroot="D:%5CICSYPBWS%5C" assetfolder="D:%5CICSYPBWS%5Capplication%5Cviews%5CSpryAssets%5C" webfontsfolder="D:%5CICSYPBWS%5Capplication%5Cviews%5Cwebfonts%5C" imagefolder="" spacerfilepath="" refreshlocal="TRUE" rewritedocrellinks="FALSE" cache="TRUE" httpaddress="http://ctcloud.sytes.net/" relativeTo="DOCUMENT" caseSensitiveLinks="FALSE" curserver="webserver"/>
     <vcsinfo type="svn" server="https://subversion.assembla.com:443/svn/ICSYPB" user="rgviro" password="313A3A35566C7C3B3C3F3F"/>
     <designnotes usedesignnotes="TRUE" sharedesignnotes="FALSE"/>
     <sitemap homepage="" pagesperrow="200" columnwidth="125" showdependentfiles="FALSE" showpagetitles="FALSE" showhiddenfiles="FALSE"/>
@@ -14,7 +14,7 @@
         <column name="Checked%20Out%20By" align="left" show="TRUE" share="FALSE" builtin="TRUE" localwidth="-1" remotewidth="-1"/>
 </fileviewcolumns>
     <serverlist>
-        <server servermodel="PHP%20MySQL" servertype="remoteAndTestingServer" weburl="http://localhost/" connectionsmigrated="FALSE" serverobjectsversion="1" defaultdoctype="HTML" accesstype="lan" remoteroot="D:/ICSYPB-WEB/" name="icsypbServer" maintainSyncInfo="TRUE" autoUpload="FALSE" enablecheckin="FALSE" checkoutname="" checkoutwhenopen="TRUE" emailaddress="" refreshremote="FALSE" testsvrbinaccesstype="none"/>
+        <server servermodel="PHP%20MySQL" servertype="remoteAndTestingServer" weburl="http://ctcloud.sytes.net/" connectionsmigrated="FALSE" serverobjectsversion="1" defaultdoctype="HTML" accesstype="lan" remoteroot="D:/ICSYPB-WEB/" name="icsypbServer" maintainSyncInfo="TRUE" autoUpload="FALSE" enablecheckin="FALSE" checkoutname="" checkoutwhenopen="TRUE" emailaddress="" refreshremote="FALSE" testsvrbinaccesstype="none"/>
 </serverlist>
     <cloaking enabled="TRUE" patterns="FALSE">
         <cloakedfolder folder="dw_php_codehinting.config"/>
