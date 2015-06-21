@@ -41,19 +41,23 @@ class gestorBalizas extends CI_Controller {
 		    $crud->set_table('baliza');
 		    
 		    //Modificamos display de columnas
-		    
-		    $crud->display_as('MAC','MAC');
-		    $crud->display_as('POSICION','POSICION');	     
 		    $crud->display_as('TEXTO_ID','DESCRIPCION');
-		    $crud->display_as('ID_CONTACTO','PERSONA');
+		    $crud->display_as('MAC','MAC');
+		    $crud->display_as('POSICION','POSICION');	
+		    $crud->display_as('USER','PERSONA');
 		    $crud->display_as('ESTROPEADO','ESTROPEADO');
-		    $crud->display_as('MAIL','EMAIL');
+		    $crud->display_as('EMAIL','EMAIL');
 	   		    //Establecemos relacion.
 		    //$crud->set_relation('ID_CONTACTO','USUARIO','IDUSUARIO');
 	
 		    //Nomber que aparece al lado de Añadir
-		    $crud->set_subject('baliza');
+		    $crud->set_subject('Baliza');
+
+		    //Establecemos relacion.
+		    $crud->set_relation('IDBALIZA','balizausuario','USER');
+		 	$crud->set_relation('IDBALIZA','balizausuario','EMAIL');
 		    
+		    $crud->fields('TEXTO_ID','MAC','POSICION','ESTROPEADO');
 		    //Indicamos los campos obligatorios
 		  //   $crud->required_fields('MAC','TEXTO_ID','ID_CONTACTO','ESTROPEADO', 'MAIL' );
 	

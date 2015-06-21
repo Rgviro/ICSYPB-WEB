@@ -40,6 +40,8 @@ class gestorUsuarios extends CI_Controller {
 		     
 			//Indicamos la tabla
 		    $crud->set_table('usuario');
+		    //Nomber que aparece al lado de Añadir
+		    $crud->set_subject('Usuario');
 		    
 		    //Modificamos display de columnas
 		    
@@ -47,17 +49,16 @@ class gestorUsuarios extends CI_Controller {
 		    $crud->display_as('NOMBRE','NOMBRE');	     
 		    $crud->display_as('APELLIDO1','PRIMER APELLIDO');
 		    $crud->display_as('APELLIDO2','SEGUNDO APELLIDO');
-		    $crud->display_as('ID_TIPO','ROL');
+		    $crud->display_as('IDTIPO','ROL');
 		    $crud->display_as('EMAIL','E MAIL');
 		    $crud->display_as('TFNO','TELEFONO');
 		    $crud->display_as('PASSWD','CLAVE');
 	   
 		    //Establecemos relacion.
-		   // $crud->set_relation('ID_TIPO','tipousuario','IDTIPO');
-		 	
-		    //Nomber que aparece al lado de Añadir
-		    $crud->set_subject('Usuario');
 		    
+		   $crud->set_relation('IDTIPO','tipousuario','DESCRIPCION');
+		 	
+		  
 		    //Indicamos los campos obligatorios
 		    $crud->required_fields('USER','NOMBRE','EMAIL', 'TFNO','PASWD');
 	
@@ -65,15 +66,16 @@ class gestorUsuarios extends CI_Controller {
 		    //Validaciones sobre los campos
 		    $crud->set_rules('USER','usuario','trim|required|min_length[5]|max_length[20]');
 		    $crud->set_rules('NOMBRE','Nombre','trim|required|min_length[5]|max_length[20]');
-		    $crud->set_rules('APELLIDO1','Primer apellido','trim|max_length[30]');
-		    $crud->set_rules('APELLIDO2','Segundo apellido','trim|max_length[30]');
-		    $crud->set_rules('ID_TIPO','ID_TIPO','required');
+		    $crud->set_rules('APELLIDO1','Primer apellido','trim|max_length[50]');
+		    $crud->set_rules('APELLIDO2','Segundo apellido','trim|max_length[50]');
+		    //$crud->set_rules('ID_TIPO','ID_TIPO','required');
 		    $crud->set_rules('EMAIL','Email','trim|required|valid_email');
 		    $crud->set_rules('TFNO','Telefono','trim|required|exact_length[9]');	    
 		    $crud->set_rules('PASSWD','Password','trim|required|min_length[5]|max_length[20]');
 		    	    
 	    //Establecemos relacion.
-		    $crud->set_relation('ID_TIPO','tipousuario','IDTIPO');
+		  //  $crud->set_relation('ID_TIPO','tipousuario','IDTIPO');
+		   
 		    //Valores para el campo tipo
 		    //$crud->field_type('ID_TIPO','dropdown',
 		   	//	array('1' => '1', '2' => '2', '3' => '3'));

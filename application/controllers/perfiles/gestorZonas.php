@@ -40,7 +40,7 @@ class gestorZonas extends CI_Controller {
 			//Indicamos la tabla
 		    $crud->set_table('ruta');
 		     //Nomber que aparece al lado de Añadir
-		    $crud->set_subject('Ruta');
+		    $crud->set_subject('Zona');
 			//REnderizamos la vista 
 			$output = $crud->render();
 		 

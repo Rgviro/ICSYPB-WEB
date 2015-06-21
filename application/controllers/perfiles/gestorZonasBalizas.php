@@ -47,15 +47,15 @@ class gestorZonasBalizas extends CI_Controller {
 		    
 		    //Modificamos display de columnas
 		    
-		    $crud->display_as('IDRB','ID');
+		   // $crud->display_as('IDRB','ID');
 		    $crud->display_as('IDRUTA','RUTA');
 		    $crud->display_as('IDBALIZA','BALIZA');
 		    $crud->display_as('ORDEN','POSICION');	      
 		   
 	   
 		    //Establecemos relacion.
-		    $crud->set_relation('IDRUTA','ruta','IDRUTA');
-		 	$crud->set_relation('IDBALIZA','baliza','IDBALIZA');
+		    $crud->set_relation('IDRUTA','ruta','DESCRIPCION');
+		 	$crud->set_relation('IDBALIZA','baliza','TEXTO_ID');
 		    //Nomber que aparece al lado de Añadir
 		    $crud->set_subject('Baliza a Ruta');
 		    
@@ -66,7 +66,7 @@ class gestorZonasBalizas extends CI_Controller {
 		    //Validaciones sobre los campos    
 		   
 		    
-	    $crud->fields('IDRB','IDRUTA','IDBALIZA','ORDEN');
+	    $crud->fields('IDRUTA','IDBALIZA','ORDEN');
 		    
 		    //Deshabilitamos el boton borrar, solo hacemos borrado logico
 		    //$crud->unset_delete();

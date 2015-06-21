@@ -10,7 +10,7 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="<?=base_url()?>login" title="ICSYPB">
-	  <img style="max-width:70px; margin-top: -10px;" src="<?=base_url()?>assets/Images/btrack.png"></a>
+	  <img style="max-width:50px; margin-top: -15px;" src="<?=base_url()?>assets/Images/btrack.png"></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">    
