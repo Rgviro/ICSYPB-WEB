@@ -10,10 +10,7 @@ class gestorZonas extends CI_Controller {
 		$this->load->helper('url');
 		// Biblioteca GroceryCRUD
 		$this->load->library('grocery_CRUD');
-		$this->load->library(array('session'));		
-
-		//cagamos la session
-		$this->load->library('session');
+		$this->load->library(array('session'));	
     }
  
     
@@ -25,8 +22,8 @@ class gestorZonas extends CI_Controller {
 
     
     //Creacion de Zonas
-    public function gestorZona(){
- echo "<h1>Gestor de Zonas</h1>";//Just an example to ensure that we get into the function
+    public function gestorZona()
+    {
     	if ($this->session->userdata('perfil') != 'administrador') {
 			//redirect(base_url().'login');
 			$this->load->view('usuario_no_autorizado.php');
@@ -37,55 +34,21 @@ class gestorZonas extends CI_Controller {
 		    
 	    	//Tema twitter bootstrap adaptativo
 	    	// desactivado de momento por que no filtra bien en algunos casos
-	    	$crud->set_theme('twitter-bootstrap');    	
+	    	//$crud->set_theme('twitter-bootstrap');    	
 	    	$crud->set_theme('datatables');   
 		     
 			//Indicamos la tabla
 		    $crud->set_table('ruta');
 		     //Nomber que aparece al lado de Añadir
 		    $crud->set_subject('Ruta');
-		    
-		    //Modificamos display de columnas
-		    
-		   // $crud->display_as('IDRUTA','ID');
-		   // $crud->display_as('DESCRIPCION','DESCRIPCION');	     
-		   
-	   
-		    //Establecemos relacion.
-		   // $crud->set_relation('ID_TIPO','tipousuario','IDTIPO');
-		 	
-		    //Nomber que aparece al lado de Añadir
-		    //$crud->set_subject('Ruta');
-		    
-		    //Indicamos los campos obligatorios
-		    //$crud->required_fields('DESCRIPCION');
-	
-		    
-		    //Validaciones sobre los campos
-		    
-		   // $crud->set_rules('DESCRIPCION','Nombre','trim|required|min_length[5]|max_length[20]');
-		   
-		   
-		    
-		    
-		   // $crud->fields('IDRUTA','DESCRIPCION');
-		    
-		    //Deshabilitamos el boton borrar, solo hacemos borrado logico
-		    //$crud->unset_delete();
-		    
 			//REnderizamos la vista 
-		    $output = $crud->render();
+			$output = $crud->render();
 		 
-		    $this->_example_output($output);
+		    $this->load->view('header.php');		    
+		    $this->load->view('perfiles/admin_menu.php');		    		    
+        	$this->load->view('gestorZonas.php',$output);     		
+    		$this->load->view('footer.php');
+		    
     	}	    
     }
-      
-
-    
-    function _example_output($output = null) 
-    {
-        $this->load->view('gestorZonas.php',$output);    
-    }
-    
-   
 }

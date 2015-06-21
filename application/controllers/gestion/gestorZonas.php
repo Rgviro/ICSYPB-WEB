@@ -26,7 +26,7 @@ class gestorZonas extends CI_Controller {
     
     //Creacion de Zonas
     public function gestorZona(){
- echo "<h1>Gestor de Zonas</h1>";//Just an example to ensure that we get into the function
+ 
     	if ($this->session->userdata('perfil') != 'administrador') {
 			//redirect(base_url().'login');
 			$this->load->view('usuario_no_autorizado.php');

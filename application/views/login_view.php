@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="<?=base_url()?>assets/Images/upsam.ico"> 
+  <link rel="icon" href="<?=base_url()?>assets/Images/btrack-ico2.ico"> 
   <link href="<?=base_url()?>assets/CSS/bootstrap.min.css" rel="stylesheet" type="text/css">
   <script src="<?=base_url()?>assets/Javascript/jquery-1.11.2.min.js"></script>
   <script src="<?=base_url()?>assets/Javascript/bootstrap.min.js"></script>
@@ -13,13 +13,15 @@
   <meta name="author" content="Grupo 11">
 </head>
 <body>
+
+<p><img class="center-block" src="assets/Images/btrack.png"   width="100"  height="93" align="middle" alt="ICSYPB" longdesc="assets/Images/btrack.png"  /></p>
 <?php
 $username = array('name' => 'username', 'placeholder' => 'nombre de usuario');
 $password = array('name' => 'password',	'placeholder' => 'introduce tu password');
 	$submit = array('name' => 'submit', 'value' => 'Iniciar sesion', 'title' => 'Iniciar sesion');
 	?>
 	<div class="container_12">
-		<h1 align = center>ICSYPB</h1>
+		<h1 align = center><FONT COLOR="0A3D91">ICSYPB</FONT></h1>
 <!--
      <form class="form-signin">
         <h2 class="form-signin-heading">Acceso al sistema</h2>
@@ -31,23 +33,21 @@ $password = array('name' => 'password',	'placeholder' => 'introduce tu password'
       </form>
 
     </div>  -->
-
-
 		<div class="grid_12" id="login">
 			<div class="grid_8 push_2" id="formulario_login">
 				<div class="grid_6 push_1" id="campos_login">
 					<div align="center">
 					  <?=form_open(base_url().'login/new_user')?>
 				  </div>
-				  <label for="username" >
-					  <div class="navbar-static" ><strong>Nombre de usuario:</strong></div>
+				  <label align="center" for="username" class="center-block" >
+					  <div align="center"><strong>Usuario:</strong></div>
 				  </label>
 					<div align=center>
 					  <?=form_input($username)?>
 				  </div>
 					<p><?=form_error('username')?></p>
-					<label for="password" class="navbar-static" >
-					  <div align="center"><strong>Introduce tu password:</strong></div>
+					<label for="password" class="center-block" >
+					  <div align="center"><strong>Password:</strong></div>
 					</label>
 					<div align="center" class="input-xlarge">
 					  <span class="input-large">

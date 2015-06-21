@@ -18,6 +18,6 @@ class Admin extends CI_Controller {
 			redirect(base_url().'login');
 		}
 		$data['titulo'] = 'ICSYPB - Bienvenido Administrador';
-		$this->load->view('admin_view',$data);
+		$this->load->view('perfiles/admin_view',$data);
 	}
 }

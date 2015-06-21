@@ -24,7 +24,6 @@ class gestorBalizas extends CI_Controller {
     //Creacion de Balizas
     public function gestorBlz()
     {
-
     	if ($this->session->userdata('perfil') != 'administrador') {
 			//redirect(base_url().'login');
 			$this->load->view('usuario_no_autorizado.php');
@@ -36,7 +35,7 @@ class gestorBalizas extends CI_Controller {
 	    	//Tema twitter bootstrap adaptativo
 	    	// desactivado de momento por que no filtra bien en algunos casos
 	    	//$crud->set_theme('twitter-bootstrap');    	
-	    	//$crud->set_theme('datatables');   
+	    	$crud->set_theme('datatables');   
 		     
 			//Indicamos la tabla
 		    $crud->set_table('baliza');
@@ -82,8 +81,11 @@ class gestorBalizas extends CI_Controller {
 		    
 			//REnderizamos la vista 
 		    $output = $crud->render();
-		 
-		    $this->_example_output($output);
+		    $this->load->view('header.php');		    
+		    $this->load->view('perfiles/admin_menu.php');		    		    
+        	$this->load->view('gestorBalizas.php',$output);        		
+    		$this->load->view('footer.php');
+		 		    
     	}	    
     }
     

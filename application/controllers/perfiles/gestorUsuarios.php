@@ -35,7 +35,7 @@ class gestorUsuarios extends CI_Controller {
 		    
 	    	//Tema twitter bootstrap adaptativo
 	    	// desactivado de momento por que no filtra bien en algunos casos
-	    	$crud->set_theme('twitter-bootstrap');    	
+	    	//$crud->set_theme('twitter-bootstrap');    	
 	    	$crud->set_theme('datatables');   
 		     
 			//Indicamos la tabla
@@ -91,7 +91,14 @@ class gestorUsuarios extends CI_Controller {
 			//REnderizamos la vista 
 		    $output = $crud->render();
 		 
-		    $this->_example_output($output);
+		    $this->load->view('header.php');
+		    if ($this->session->userdata('perfil') == 'administrador') {
+		    	$this->load->view('perfiles/admin_menu.php');
+		    }
+		    else{}	
+		    
+        	$this->load->view('gestorUsuarios.php',$output);     		
+    		$this->load->view('footer.php');
     	}	    
     }
       
@@ -103,20 +110,5 @@ class gestorUsuarios extends CI_Controller {
     	$post_array['PASSWD'] =sha1($post_array['PASSWD']); 
     
     	return $post_array;
-    }
-
-    
-    function get_date_insert($post_array) {
-    	$post_array['FECHA_ALTA'] = date('d-m-Y H:i:s');
-    	return $post_array;
-    }
-    function get_date_update($post_array) {
-    	$post_array['FECHA_MODIFICACION'] = date('d-m-Y H:i:s');
-    	return $post_array;
-    }           
-
-    function _example_output($output = null) 
-    {
-        $this->load->view('gestorUsuarios.php',$output);    
-    }
+    }  
 }
