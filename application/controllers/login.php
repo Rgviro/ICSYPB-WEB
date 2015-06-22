@@ -67,7 +67,7 @@ class Login extends CI_Controller
 				// y los añadimos a la sesion con set_userdata
 				if($check_user == TRUE)
 				{
-					switch ($check_user->ID_TIPO) {
+					switch ($check_user->IDTIPO) {
 						case 1:
 							$data = array(
 			                'is_logued_in' 	=> 		TRUE,

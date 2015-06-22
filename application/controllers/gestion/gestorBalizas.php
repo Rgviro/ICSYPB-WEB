@@ -43,7 +43,7 @@ class gestorBalizas extends CI_Controller {
 		    
 		    //Modificamos display de columnas
 		    
-		    $crud->display_as('MAC','MAC');
+		    $crud->display_as('MAC','DIRECCION MAC');
 		    $crud->display_as('POSICION','POSICION');	     
 		    $crud->display_as('TEXTO_ID','DESCRIPCION');
 		    $crud->display_as('ID_CONTACTO','PERSONA');

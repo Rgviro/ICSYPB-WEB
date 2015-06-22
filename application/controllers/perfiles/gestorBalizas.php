@@ -42,22 +42,30 @@ class gestorBalizas extends CI_Controller {
 		    
 		    //Modificamos display de columnas
 		    $crud->display_as('TEXTO_ID','DESCRIPCION');
-		    $crud->display_as('MAC','MAC');
+		    $crud->display_as('MAC','DIRECCION MAC');
 		    $crud->display_as('POSICION','POSICION');	
 		    $crud->display_as('USER','PERSONA');
-		    $crud->display_as('ESTROPEADO','ESTROPEADO');
+		   // $crud->display_as('ESTROPEADO','ESTROPEADO');
 		    $crud->display_as('EMAIL','EMAIL');
-	   		    //Establecemos relacion.
-		    //$crud->set_relation('ID_CONTACTO','USUARIO','IDUSUARIO');
+	   		  
+	   		//Establecemos relacion.
+	   		//$crud->set_relation('IDUSUARIO','USUARIOS','{NOMBRE} {APELLIDO1}','IDUSUARIO IN (SELECT B.IDUSUARIO FROM REL_GESTOR_GRUPO A, USUARIOS B WHERE A.IDUSUARIO = B.IDUSUARIO)');
+	   		$crud->set_relation('IDBALIZA','usuario','USER','IDBALIZA IN (SELECT B.IDUSUARIO, B.USER FROM contactobaliza A, usuario B WHERE A.IDUSUARIO = B.IDUSUARIO)');
+	   		//$crud->set_relation('IDBALIZA','GRUPOS','NOMBRE','IDGRUPO IN (SELECT DISTINCT(IDGRUPO) FROM REL_USU_GRUPO)');
+		    //$crud->set_relation_n_n('IDBALIZA','contactobaliza','usuario','IDBALIZA','IDUSUARIO','USER','IDRB');
+		    //$crud->set_relation_n_n('IDBALIZA','contactobaliza','usuario','IDBALIZA','IDUSUARIO','MAIL','IDRB');
+		 	//$crud->set_relation('IDBALIZA','balizausuario','EMAIL');
 	
+			$crud->columns('TEXTO_ID','MAC','POSICION','USER','ESTROPEADO','EMAIL','IDRB');
+
 		    //Nomber que aparece al lado de Añadir
 		    $crud->set_subject('Baliza');
 
-		    //Establecemos relacion.
-		    $crud->set_relation('IDBALIZA','balizausuario','USER');
-		 	$crud->set_relation('IDBALIZA','balizausuario','EMAIL');
+		    //Valores para el campo Estropeado
+		    $crud->field_type('ESTROPEADO','dropdown',
+		     		array(1 => 'SI', 0 => 'NO'));
 		    
-		    $crud->fields('TEXTO_ID','MAC','POSICION','ESTROPEADO');
+		    $crud->fields('TEXTO_ID','MAC','POSICION','USER','ESTROPEADO','EMAIL');
 		    //Indicamos los campos obligatorios
 		  //   $crud->required_fields('MAC','TEXTO_ID','ID_CONTACTO','ESTROPEADO', 'MAIL' );
 	
@@ -70,9 +78,7 @@ class gestorBalizas extends CI_Controller {
 		  //   $crud->set_rules('EMAIL','Email','trim|required|valid_email');		    
 		    	    
 	    
-		    //Valores para el campo Estropeado
-		    $crud->field_type('ESTROPEADO','dropdown',
-		     		array('SI' => 'SI', 'NO' => 'NO'));
+		    
 		    
 		    
 		    

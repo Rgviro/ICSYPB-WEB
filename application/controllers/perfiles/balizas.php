@@ -165,5 +165,5 @@ class balizas extends CI_Controller {
     	}	    
     }
       
-   
+ }  
     
