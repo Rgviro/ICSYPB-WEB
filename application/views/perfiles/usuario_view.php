@@ -4,5 +4,5 @@
 <img src="<?=base_url()?>assets/Images/Logo-ani.gif" class="img-responsive center-block" alt="Logo_SCONV">
 </div>
 <div class="container-fluid">
-<h5>SCONV,sistema online de gesti&oacute;n de convocatorias</h5>
+<h5 style="text-align: center">ICSYPB , Track your way </h5>
 </div>

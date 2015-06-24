@@ -30,8 +30,59 @@ class gestorZonasBalizas extends CI_Controller {
 //Comprobamos el login de usuario    	
 
     	if ($this->session->userdata('perfil') != 'administrador') {
-			//redirect(base_url().'login');
-			$this->load->view('usuario_no_autorizado.php');
+			if ($this->session->userdata('perfil') != 'gestor') {
+				//redirect(base_url().'login');
+				$this->load->view('usuario_no_autorizado.php');
+						
+			}else {
+	    	
+			    $crud = new grocery_CRUD();
+			    
+		    	//Tema twitter bootstrap adaptativo
+		    	// desactivado de momento por que no filtra bien en algunos casos
+		    	//$crud->set_theme('twitter-bootstrap');    	
+		    	$crud->set_theme('datatables');   
+			     
+				//Indicamos la tabla
+			    $crud->set_table('rutabaliza');
+			          
+			   //Modificamos display de columnas
+			    
+			    $crud->display_as('IDRUTA','RUTA');			    
+			    $crud->display_as('IDBALIZA','BALIZA');
+			    $crud->display_as('ORDEN','POSICION');	
+		   
+			    //Establecemos relacion.
+			  //  $crud->set_relation('IDRUTA','ruta','DESCRIPCION');
+			 	$crud->set_relation('IDBALIZA','baliza','TEXTO_ID');
+			 	$crud->set_relation('IDRUTA','rutagestor','IDUSUARIO');
+
+				$crud->where('IDUSUARIO',$this->session->userdata('id_usuario'));
+			   
+				
+			    //Nomber que aparece al lado de Añadir
+			    $crud->set_subject('Baliza a Ruta');
+			    
+			    //Indicamos los campos obligatorios
+			    $crud->required_fields('IDRUTA');
+				$crud->required_fields('IDBALIZA');
+			    
+			    //Validaciones sobre los campos    
+			   
+			    
+		    $crud->fields('IDRUTA','IDBALIZA','ORDEN');
+			    
+			    //Deshabilitamos el boton borrar, solo hacemos borrado logico
+			    //$crud->unset_delete();
+			    
+				//REnderizamos la vista 
+			    $output = $crud->render();
+			 
+			    $this->load->view('header.php');		    
+			    $this->load->view('perfiles/gestor_menu.php');		    		    
+	        	$this->load->view('gestorZonas.php',$output);     		
+	    		$this->load->view('footer.php');
+	    	}	    
 						
 		}else {
     	

@@ -37,7 +37,7 @@ class gestorZonas extends CI_Controller {
 		    
 	    	//Tema twitter bootstrap adaptativo
 	    	// desactivado de momento por que no filtra bien en algunos casos
-	    	$crud->set_theme('twitter-bootstrap');    	
+	    	//$crud->set_theme('twitter-bootstrap');    	
 	    	$crud->set_theme('datatables');   
 		     
 			//Indicamos la tabla
@@ -45,43 +45,46 @@ class gestorZonas extends CI_Controller {
 		     //Nomber que aparece al lado de Añadir
 		    $crud->set_subject('Ruta');
 		    
-		    //Modificamos display de columnas
-		    
-		   // $crud->display_as('IDRUTA','ID');
-		   // $crud->display_as('DESCRIPCION','DESCRIPCION');	     
-		   
-	   
-		    //Establecemos relacion.
-		   // $crud->set_relation('ID_TIPO','tipousuario','IDTIPO');
-		 	
-		    //Nomber que aparece al lado de Añadir
-		    //$crud->set_subject('Ruta');
-		    
-		    //Indicamos los campos obligatorios
-		    //$crud->required_fields('DESCRIPCION');
-	
-		    
-		    //Validaciones sobre los campos
-		    
-		   // $crud->set_rules('DESCRIPCION','Nombre','trim|required|min_length[5]|max_length[20]');
-		   
-		   
-		    
-		    
-		   // $crud->fields('IDRUTA','DESCRIPCION');
-		    
-		    //Deshabilitamos el boton borrar, solo hacemos borrado logico
-		    //$crud->unset_delete();
 		    
 			//REnderizamos la vista 
 		    $output = $crud->render();
 		 
-		    $this->_example_output($output);
+		    $this->_load_view($output);
     	}	    
     }
       
 
-    
+    function _load_view($output = null, $vista)
+  {
+    $this->load->view('header.php');
+	switch ($this->session->userdata('perfil'))
+	{
+		case "administrador":
+	        	$this->load->view('perfiles/admin_menu.php');
+			break;
+		case "gestor":
+                        $this->load->view('perfiles/gestor_menu.php');
+			break;
+		case "usuario":
+                        $this->load->view('perfiles/usuario_menu.php');
+			break;
+	}
+	switch ($vista) {
+		case 1:
+			// Vista de gestor de grupos con usuarios asignados al grupo
+			$this->load->view('gestion/gestorZonas.php',$output);
+			break;
+		case 2:
+			// Vista de gestor de grupos con gestores con gestores asignados al grupo
+			$this->load->view('gestion/gestorZonas.php.php',$output);
+			break;
+	}
+
+
+        $this->load->view('footer.php');
+  }
+
+}
     function _example_output($output = null) 
     {
         $this->load->view('gestorZonas.php',$output);    

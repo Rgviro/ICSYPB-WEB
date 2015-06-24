@@ -25,8 +25,32 @@ class gestorZonas extends CI_Controller {
     public function gestorZona()
     {
     	if ($this->session->userdata('perfil') != 'administrador') {
-			//redirect(base_url().'login');
-			$this->load->view('usuario_no_autorizado.php');
+			if ($this->session->userdata('perfil') != 'gestor') {
+				//redirect(base_url().'login');
+				$this->load->view('usuario_no_autorizado.php');						
+			}else {
+	    	
+			    $crud = new grocery_CRUD();
+			    
+		    	//Tema twitter bootstrap adaptativo
+		    	// desactivado de momento por que no filtra bien en algunos casos
+		    	//$crud->set_theme('twitter-bootstrap');    	
+		    	$crud->set_theme('datatables');   
+			     
+				//Indicamos la tabla
+			    $crud->set_table('ruta');
+			     //Nomber que aparece al lado de Añadir
+			    $crud->set_subject('Zona');
+			    $crud->set_relation('IDRUTA','rutagestor','IDUSUARIO');
+
+				$crud->where('IDUSUARIO',$this->session->userdata('id_usuario'));
+				//REnderizamos la vista 
+				$output = $crud->render();			 
+			    $this->load->view('header.php');		    
+			    $this->load->view('perfiles/gestor_menu.php');		    		    
+	        	$this->load->view('gestorZonas.php',$output);     		
+	    		$this->load->view('footer.php');			    
+	    	}	    
 						
 		}else {
     	

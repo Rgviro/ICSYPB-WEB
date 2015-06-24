@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-06-2015 a las 13:19:42
+-- Tiempo de generación: 24-06-2015 a las 14:29:26
 -- Versión del servidor: 5.6.24
 -- Versión de PHP: 5.6.8
 
@@ -31,17 +31,61 @@ CREATE TABLE IF NOT EXISTS `baliza` (
   `MAC` varchar(17) COLLATE utf8_spanish_ci NOT NULL,
   `POSICION` int(11) NOT NULL,
   `TEXTO_ID` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `ID_CONTACTO` int(11) NOT NULL,
-  `ESTROPEADO` int(1) NOT NULL,
-  `MAIL` varchar(50) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `ESTROPEADO` int(1) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `baliza`
 --
 
-INSERT INTO `baliza` (`IDBALIZA`, `MAC`, `POSICION`, `TEXTO_ID`, `ID_CONTACTO`, `ESTROPEADO`, `MAIL`) VALUES
-(1, '94:51:03:1C:C7:3C', 0, 'Baliza Galaxy S2 RGV', 1, 0, 'rgviro@hotmail.com');
+INSERT INTO `baliza` (`IDBALIZA`, `MAC`, `POSICION`, `TEXTO_ID`, `ESTROPEADO`) VALUES
+(1, '94:51:03:1C:C7:3C', 0, 'Baliza Galaxy S2 RGV', 0),
+(2, '99:99:99:99:99:99', 1, 'prieba de baliza', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `balizastojson`
+--
+CREATE TABLE IF NOT EXISTS `balizastojson` (
+`IDRUTA` varchar(50)
+,`IDBALIZA` int(11)
+,`TEXTO_ID` varchar(50)
+,`MAC` varchar(17)
+,`POSICION` int(11)
+,`IDUSUARIO` int(50)
+,`ESTROPEADO` int(1)
+,`EMAIL` varchar(50)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `balizastojson2`
+--
+CREATE TABLE IF NOT EXISTS `balizastojson2` (
+`IDRUTA` varchar(50)
+,`DESCRIPCION` varchar(100)
+,`IDBALIZA` int(11)
+,`TEXTO_ID` varchar(50)
+,`MAC` varchar(17)
+,`POSICION` int(11)
+,`IDUSUARIO` int(50)
+,`ESTROPEADO` int(1)
+,`EMAIL` varchar(50)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `balizausuario`
+--
+CREATE TABLE IF NOT EXISTS `balizausuario` (
+`IDBALIZA` varchar(50)
+,`IDUSUARIO` int(11)
+,`USER` varchar(50)
+,`EMAIL` varchar(50)
+);
 
 -- --------------------------------------------------------
 
@@ -53,8 +97,16 @@ CREATE TABLE IF NOT EXISTS `contactobaliza` (
   `IDRB` int(11) NOT NULL,
   `IDUSUARIO` int(50) NOT NULL,
   `IDBALIZA` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `ORDEN` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `POSICION` varchar(100) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `contactobaliza`
+--
+
+INSERT INTO `contactobaliza` (`IDRB`, `IDUSUARIO`, `IDBALIZA`, `POSICION`) VALUES
+(1, 1, '1', ''),
+(2, 2, '2', '');
 
 -- --------------------------------------------------------
 
@@ -78,37 +130,11 @@ INSERT INTO `dispositivo` (`IDDISP`, `MAC`, `DESCRIPCION`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura Stand-in para la vista `jsonenvio1`
+-- Estructura Stand-in para la vista `gestores`
 --
-CREATE TABLE IF NOT EXISTS `jsonenvio1` (
-`DESCRIPCION` varchar(100)
-,`IDRUTA` int(11)
-,`ORDEN` int(11)
-,`IDBALIZA` int(11)
-,`TEXTO_ID` varchar(50)
-,`MAC` varchar(17)
-,`POSICION` int(11)
-,`ID_CONTACTO` int(11)
-,`ESTROPEADO` int(1)
-,`MAIL` varchar(50)
-);
-
--- --------------------------------------------------------
-
---
--- Estructura Stand-in para la vista `prueba`
---
-CREATE TABLE IF NOT EXISTS `prueba` (
-`DESCRIPCION` varchar(100)
-,`IDRUTA` int(11)
-,`ORDEN` int(11)
-,`IDBALIZA` int(11)
-,`TEXTO_ID` varchar(50)
-,`MAC` varchar(17)
-,`POSICION` int(11)
-,`ID_CONTACTO` int(11)
-,`ESTROPEADO` int(1)
-,`MAIL` varchar(50)
+CREATE TABLE IF NOT EXISTS `gestores` (
+`IDUSUARIO` int(11)
+,`USER` varchar(50)
 );
 
 -- --------------------------------------------------------
@@ -120,14 +146,16 @@ CREATE TABLE IF NOT EXISTS `prueba` (
 CREATE TABLE IF NOT EXISTS `ruta` (
   `IDRUTA` int(11) NOT NULL,
   `DESCRIPCION` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `ruta`
 --
 
 INSERT INTO `ruta` (`IDRUTA`, `DESCRIPCION`) VALUES
-(1, 'grupo 1');
+(1, 'grupo 1'),
+(2, 'Ruta1'),
+(3, 'Ruta2');
 
 -- --------------------------------------------------------
 
@@ -140,14 +168,39 @@ CREATE TABLE IF NOT EXISTS `rutabaliza` (
   `IDRUTA` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `IDBALIZA` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `ORDEN` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `rutabaliza`
 --
 
 INSERT INTO `rutabaliza` (`IDRB`, `IDRUTA`, `IDBALIZA`, `ORDEN`) VALUES
-(1, '1', '1', 1);
+(1, '1', '1', 1),
+(2, '2', '1', 1),
+(3, '3', '1', 2),
+(4, '2', '2', 3),
+(5, '1', '2', 4),
+(6, '2', '1', 5);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `rutagestor`
+--
+
+CREATE TABLE IF NOT EXISTS `rutagestor` (
+  `IDRG` int(11) NOT NULL,
+  `IDRUTA` int(11) NOT NULL,
+  `IDUSUARIO` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `rutagestor`
+--
+
+INSERT INTO `rutagestor` (`IDRG`, `IDRUTA`, `IDUSUARIO`) VALUES
+(1, 1, 1),
+(2, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -178,11 +231,12 @@ INSERT INTO `tipousuario` (`IDTIPO`, `DESCRIPCION`, `IDPRIVILEGIO`) VALUES
 
 CREATE TABLE IF NOT EXISTS `tracking` (
   `IDTRACK` int(6) NOT NULL,
-  `IDUSUARIO` int(11) NOT NULL,
-  `IDRUTA` int(11) NOT NULL,
-  `IDDISP` int(11) NOT NULL,
-  `IDBALIZA` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `DIA` datetime DEFAULT NULL
+  `MACUSUARIO` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `ID_RUTA` int(11) NOT NULL,
+  `ID_BALIZA` int(11) NOT NULL,
+  `MAC_BALIZA` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `FECHA` datetime DEFAULT NULL,
+  `IDTRACKPUB` varchar(100) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -208,36 +262,58 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `NOMBRE` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `APELLIDO1` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `APELLIDO2` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `ID_TIPO` int(11) NOT NULL,
+  `IDTIPO` int(11) NOT NULL,
   `EMAIL` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `TFNO` varchar(14) COLLATE utf8_spanish_ci NOT NULL,
   `PASSWD` varchar(50) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`IDUSUARIO`, `USER`, `NOMBRE`, `APELLIDO1`, `APELLIDO2`, `ID_TIPO`, `EMAIL`, `TFNO`, `PASSWD`) VALUES
-(1, 'Rafa', 'Rafael', 'Garrido', 'Viro', 1, 'rgviro@hotmail.com', '651083287', 'ICSYPB');
+INSERT INTO `usuario` (`IDUSUARIO`, `USER`, `NOMBRE`, `APELLIDO1`, `APELLIDO2`, `IDTIPO`, `EMAIL`, `TFNO`, `PASSWD`) VALUES
+(1, 'Rafa', 'Rafael', 'Garrido', 'Viro', 1, 'rgviro@hotmail.com', '651083287', '4eeef8fe6b93589e035ec15fe261b8aaefa258c7'),
+(2, 'Krono', 'Carlos', 'Crisóstomo', 'Vals', 1, 'ccvals@gmail.com', '678904079', '1234'),
+(3, 'RafaG', 'Rafael', 'Garrido', 'Viro', 2, 'rgviro@hotmail.com', '651083287', '4eeef8fe6b93589e035ec15fe261b8aaefa258c7'),
+(4, 'RafaU', 'Rafael', 'Garrido', 'Viro', 3, 'rgviro@hotmail.com', '651083287', '4eeef8fe6b93589e035ec15fe261b8aaefa258c7'),
+(5, 'Sergio', 'Sergio', 'Rios', 'Aguilar', 1, 'srios@upsam.es', '666555444', 'ICSYPB');
 
 -- --------------------------------------------------------
 
 --
--- Estructura para la vista `jsonenvio1`
+-- Estructura para la vista `balizastojson`
 --
-DROP TABLE IF EXISTS `jsonenvio1`;
+DROP TABLE IF EXISTS `balizastojson`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`ctcloud.sytes.net` SQL SECURITY DEFINER VIEW `jsonenvio1` AS (select `ruta`.`DESCRIPCION` AS `DESCRIPCION`,`ruta`.`IDRUTA` AS `IDRUTA`,`rutabaliza`.`ORDEN` AS `ORDEN`,`baliza`.`IDBALIZA` AS `IDBALIZA`,`baliza`.`TEXTO_ID` AS `TEXTO_ID`,`baliza`.`MAC` AS `MAC`,`baliza`.`POSICION` AS `POSICION`,`baliza`.`ID_CONTACTO` AS `ID_CONTACTO`,`baliza`.`ESTROPEADO` AS `ESTROPEADO`,`baliza`.`MAIL` AS `MAIL` from ((`ruta` left join `rutabaliza` on((`ruta`.`IDRUTA` = `rutabaliza`.`IDRUTA`))) left join `baliza` on((`rutabaliza`.`IDBALIZA` = `baliza`.`IDBALIZA`))) order by `ruta`.`IDRUTA`,`rutabaliza`.`ORDEN`,`baliza`.`IDBALIZA`);
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `balizastojson` AS select `rutabaliza`.`IDRUTA` AS `IDRUTA`,`baliza`.`IDBALIZA` AS `IDBALIZA`,`baliza`.`TEXTO_ID` AS `TEXTO_ID`,`baliza`.`MAC` AS `MAC`,`baliza`.`POSICION` AS `POSICION`,`contactobaliza`.`IDUSUARIO` AS `IDUSUARIO`,`baliza`.`ESTROPEADO` AS `ESTROPEADO`,`usuario`.`EMAIL` AS `EMAIL` from (((`rutabaliza` join `baliza`) join `contactobaliza`) join `usuario`) where ((`rutabaliza`.`IDBALIZA` = `baliza`.`IDBALIZA`) and (`baliza`.`IDBALIZA` = `contactobaliza`.`IDBALIZA`) and (`contactobaliza`.`IDUSUARIO` = `usuario`.`IDUSUARIO`)) order by `rutabaliza`.`IDRUTA`,`baliza`.`IDBALIZA`;
 
 -- --------------------------------------------------------
 
 --
--- Estructura para la vista `prueba`
+-- Estructura para la vista `balizastojson2`
 --
-DROP TABLE IF EXISTS `prueba`;
+DROP TABLE IF EXISTS `balizastojson2`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`ctcloud.sytes.net` SQL SECURITY DEFINER VIEW `prueba` AS (select `ruta`.`DESCRIPCION` AS `DESCRIPCION`,`ruta`.`IDRUTA` AS `IDRUTA`,`rutabaliza`.`ORDEN` AS `ORDEN`,`baliza`.`IDBALIZA` AS `IDBALIZA`,`baliza`.`TEXTO_ID` AS `TEXTO_ID`,`baliza`.`MAC` AS `MAC`,`baliza`.`POSICION` AS `POSICION`,`baliza`.`ID_CONTACTO` AS `ID_CONTACTO`,`baliza`.`ESTROPEADO` AS `ESTROPEADO`,`baliza`.`MAIL` AS `MAIL` from ((`ruta` left join `rutabaliza` on((`ruta`.`IDRUTA` = `rutabaliza`.`IDRUTA`))) left join `baliza` on((`rutabaliza`.`IDBALIZA` = `baliza`.`IDBALIZA`))) order by `ruta`.`IDRUTA`,`rutabaliza`.`ORDEN`,`baliza`.`IDBALIZA`);
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `balizastojson2` AS select `rutabaliza`.`IDRUTA` AS `IDRUTA`,`ruta`.`DESCRIPCION` AS `DESCRIPCION`,`baliza`.`IDBALIZA` AS `IDBALIZA`,`baliza`.`TEXTO_ID` AS `TEXTO_ID`,`baliza`.`MAC` AS `MAC`,`baliza`.`POSICION` AS `POSICION`,`contactobaliza`.`IDUSUARIO` AS `IDUSUARIO`,`baliza`.`ESTROPEADO` AS `ESTROPEADO`,`usuario`.`EMAIL` AS `EMAIL` from ((((`rutabaliza` join `ruta`) join `baliza`) join `contactobaliza`) join `usuario`) where ((`rutabaliza`.`IDRUTA` = `ruta`.`IDRUTA`) and (`rutabaliza`.`IDBALIZA` = `baliza`.`IDBALIZA`) and (`baliza`.`IDBALIZA` = `contactobaliza`.`IDBALIZA`) and (`contactobaliza`.`IDUSUARIO` = `usuario`.`IDUSUARIO`)) order by `rutabaliza`.`IDRUTA`,`baliza`.`IDBALIZA`;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `balizausuario`
+--
+DROP TABLE IF EXISTS `balizausuario`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `balizausuario` AS select `contactobaliza`.`IDBALIZA` AS `IDBALIZA`,`usuario`.`IDUSUARIO` AS `IDUSUARIO`,`usuario`.`USER` AS `USER`,`usuario`.`EMAIL` AS `EMAIL` from (`contactobaliza` join `usuario`) where (`contactobaliza`.`IDUSUARIO` = `usuario`.`IDUSUARIO`) order by `contactobaliza`.`IDBALIZA`,`usuario`.`IDUSUARIO`;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `gestores`
+--
+DROP TABLE IF EXISTS `gestores`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `gestores` AS (select distinct `usuario`.`IDUSUARIO` AS `IDUSUARIO`,`usuario`.`USER` AS `USER` from `usuario` where ((`usuario`.`IDTIPO` = 2) or (`usuario`.`IDTIPO` = 1)));
 
 --
 -- Índices para tablas volcadas
@@ -247,7 +323,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`ctcloud.sytes.net` SQL SECURITY DEFIN
 -- Indices de la tabla `baliza`
 --
 ALTER TABLE `baliza`
-  ADD PRIMARY KEY (`IDBALIZA`), ADD KEY `CONVOCATORIA_ibfk_1` (`ID_CONTACTO`);
+  ADD PRIMARY KEY (`IDBALIZA`);
 
 --
 -- Indices de la tabla `contactobaliza`
@@ -272,6 +348,12 @@ ALTER TABLE `ruta`
 --
 ALTER TABLE `rutabaliza`
   ADD PRIMARY KEY (`IDRB`), ADD KEY `IDRUTA` (`IDRUTA`), ADD KEY `IDBALIZA` (`IDBALIZA`);
+
+--
+-- Indices de la tabla `rutagestor`
+--
+ALTER TABLE `rutagestor`
+  ADD PRIMARY KEY (`IDRG`);
 
 --
 -- Indices de la tabla `tipousuario`
@@ -299,12 +381,12 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `baliza`
 --
 ALTER TABLE `baliza`
-  MODIFY `IDBALIZA` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `IDBALIZA` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `contactobaliza`
 --
 ALTER TABLE `contactobaliza`
-  MODIFY `IDRB` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IDRB` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `dispositivo`
 --
@@ -314,12 +396,17 @@ ALTER TABLE `dispositivo`
 -- AUTO_INCREMENT de la tabla `ruta`
 --
 ALTER TABLE `ruta`
-  MODIFY `IDRUTA` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `IDRUTA` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `rutabaliza`
 --
 ALTER TABLE `rutabaliza`
-  MODIFY `IDRB` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `IDRB` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT de la tabla `rutagestor`
+--
+ALTER TABLE `rutagestor`
+  MODIFY `IDRG` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `tipousuario`
 --
@@ -334,7 +421,7 @@ ALTER TABLE `tracking`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `IDUSUARIO` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `IDUSUARIO` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -29,8 +29,39 @@ class zonas extends CI_Controller {
     {
  
     	if ($this->session->userdata('perfil') != 'administrador') {
-			//redirect(base_url().'login');
-			$this->load->view('usuario_no_autorizado.php');
+			if ($this->session->userdata('perfil') != 'gestor') {
+				//redirect(base_url().'login');
+				$this->load->view('usuario_no_autorizado.php');
+							
+			}else {
+	    	
+			    $crud = new grocery_CRUD();
+			    
+		    	//Tema twitter bootstrap adaptativo
+		    	// desactivado de momento por que no filtra bien en algunos casos
+		    	//$crud->set_theme('twitter-bootstrap');    	
+		    	$crud->set_theme('datatables');   
+			     
+				//Indicamos la tabla
+			    $crud->set_table('ruta');
+			     //Nomber que aparece al lado de Añadir
+			    $crud->set_subject('Ruta');
+			   // $crud->fields('IDRUTA','DESCRIPCION');
+			    
+			    //Deshabilitamoslos botones
+			    $crud->unset_delete();
+			    $crud->unset_edit();
+			    $crud->unset_add();
+			    $crud->unset_export();
+			    $crud->unset_print();
+				//REnderizamos la vista 
+			    $output = $crud->render();
+			 
+			    $this->load->view('header.php');		    
+			    $this->load->view('perfiles/admin_menu.php');		    		    
+	        	$this->load->view('vistaZonas.php',$output);       		
+	    		$this->load->view('footer.php');
+	    	}	    
 						
 		}else {
     	
@@ -38,7 +69,7 @@ class zonas extends CI_Controller {
 		    
 	    	//Tema twitter bootstrap adaptativo
 	    	// desactivado de momento por que no filtra bien en algunos casos
-	    	$crud->set_theme('twitter-bootstrap');    	
+	    	//$crud->set_theme('twitter-bootstrap');    	
 	    	$crud->set_theme('datatables');   
 		     
 			//Indicamos la tabla

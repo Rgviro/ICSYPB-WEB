@@ -14,12 +14,13 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">    
-            <li><a href='<?=base_url()?>perfiles/gestorUsuarios/gestorUsr'>Usuarios</a></li>        
+            <li><a href='<?=base_url()?>perfiles/gestorUsuarios/gestorUsr'>Usuarios</a></li>   
+            <li><a href='<?=base_url()?>perfiles/gestorUsuarios/gestorGsr'>Gestores</a></li>     
             <li class="dropdown">            
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gesti&oacute;n de Zonas <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href='<?=base_url()?>perfiles/gestorZonas/gestorZona'>Gestores de Zona</a></li>
-                <li><a href='<?=base_url()?>perfiles/gestorZonasBalizas/gestorBlzZona'>Balizas a Zona</a></li>                  
+                <li><a href='<?=base_url()?>perfiles/gestorZonas/gestorZona'>Zonas</a></li>
+                <li><a href='<?=base_url()?>perfiles/gestorZonasBalizas/gestorBlzZona'>Balizas por Zona</a></li>                  
               </ul>
             </li>   
             <li><a href='<?=base_url()?>perfiles/gestorBalizas/gestorBlz'>Gesti&oacute;n de Balizas</a></li>                      
@@ -30,8 +31,8 @@
             <li class="dropdown">            
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Estad&iacute;sticas <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href='<?=base_url()?>gestion/gestorgrupos/crud_gestorgruposgestor'>Totales</a></li>
-                <li><a href='<?=base_url()?>gestion/gestorgrupos/crud_gestorgruposusuario'>P&uacute;blicas</a></li>                  
+                <li><a href='<?=base_url()?>perfiles/gestorEstadisticas/GestEstTot'>Totales</a></li>
+                <li><a href='<?=base_url()?>perfiles/gestorEstadisticas/GestEstPub'>P&uacute;blicas</a></li>                  
               </ul>
             </li>           
             <li class="divider"></li>           

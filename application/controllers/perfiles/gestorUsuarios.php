@@ -104,7 +104,58 @@ class gestorUsuarios extends CI_Controller {
     	}	    
     }
       
+    //Asignacion de gestores
+    public function gestorGsr()
+    {
 
+    	if ($this->session->userdata('perfil') != 'administrador') {
+			//redirect(base_url().'login');
+			$this->load->view('usuario_no_autorizado.php');
+						
+		}else {
+    	
+		    $crud = new grocery_CRUD();
+		    
+	    	//Tema twitter bootstrap adaptativo
+	    	// desactivado de momento por que no filtra bien en algunos casos
+	    	//$crud->set_theme('twitter-bootstrap');    	
+	    	$crud->set_theme('datatables');   
+		     
+			//Indicamos la tabla
+		    $crud->set_table('rutagestor');
+		    //Nomber que aparece al lado de Añadir
+		    $crud->set_subject('Gestor a Ruta');
+		    
+		    //Modificamos display de columnas
+		    
+		    $crud->display_as('IDRUTA','RUTA');
+		    $crud->display_as('IDUSUARIO','GESTOR');	
+		    //Establecemos relacion.
+		    
+		   $crud->set_relation('IDRUTA','ruta','DESCRIPCION');
+		   $crud->set_relation('IDUSUARIO','usuario','USER','USER IN(SELECT USER FROM usuario WHERE IDTIPO= 2 OR IDTIPO =1)');
+		   //$crud->set_relation('IDUSUARIO','USUARIOS','{NOMBRE} {APELLIDO1}','IDTIPOUSUARIO IN (SELECT IDTIPOUSUARIO FROM TIPO_USUARIO WHERE IDTIPOUSUARIO IN (1,2))');
+		  
+		    //Indicamos los campos obligatorios
+		    $crud->required_fields('IDRUTA','IDUSUARIO');
+		    
+		    $crud->fields('IDRUTA','IDUSUARIO');		    
+		    
+			//REnderizamos la vista 
+		    $output = $crud->render();
+		 
+		    $this->load->view('header.php');
+		    if ($this->session->userdata('perfil') == 'administrador') {
+		    	$this->load->view('perfiles/admin_menu.php');
+		    }
+		    else{}	
+		    
+        	$this->load->view('gestorUsuarios.php',$output);     		
+    		$this->load->view('footer.php');
+    	}	    
+    }
+
+//gestorGsr
     function encrypt_password_callback($post_array) {
     	//$this->load->library('encrypt');
     	//$key = 'super-secret-key';

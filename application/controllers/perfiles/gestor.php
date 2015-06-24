@@ -3,7 +3,7 @@
 /**
  * 
  */
-class Editor extends CI_Controller {
+class Gestor extends CI_Controller {
 	
 	public function __construct() {
 		parent::__construct();
@@ -17,7 +17,11 @@ class Editor extends CI_Controller {
 		{
 			redirect(base_url().'login');
 		}
-		$data['titulo'] = 'Bienvenido de nuevo ' .$this->session->userdata('perfil');
-		$this->load->view('editor_view',$data);
+		// Carga la vista de gestor
+		$data['titulo'] = 'ICSYPB - Bienvenido Gestor';
+        $this->load->view('header.php');
+        $this->load->view('perfiles/gestor_menu.php');
+        $this->load->view('perfiles/gestor_view',$data);
+        $this->load->view('footer.php');
 	}
 }

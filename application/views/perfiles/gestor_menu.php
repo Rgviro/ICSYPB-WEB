@@ -10,48 +10,38 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="<?=base_url()?>login" title="ICSYPB">
-          <img style="max-width:70px; margin-top: -10px;" src="<?=base_url()?>assets/Images/upsam.png"></a>
+    <img style="max-width:50px; margin-top: -15px;" src="<?=base_url()?>assets/Images/btrack.png"></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active dropdown">            
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gesti&oacute;n Grupos <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-                <li><a href='<?=base_url()?>gestion/gestorgrupos/crud_gestorgruposgestor'>Grear Grupo</a></li>
-                <li><a href='<?=base_url()?>gestion/gestorgrupos/crud_gestorgruposusuario'>A&ntilde;adir Usuario</a></li>                  
-              </ul>
-            </li>
+          <ul class="nav navbar-nav">               
             <li class="dropdown">            
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gesti&oacute;n Convocatorias<span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gesti&oacute;n de Zonas <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href='<?=base_url()?>gestion/gestorconvocatorias/crud_gestorconvocatorias'>Activas</a></li>
-                <li><a href='<?=base_url()?>gestion/gestorconvocatorias/crud_gestorconvocatoriashistorico'>Hist&oacute;rico</a></li>                  
+                <li><a href='<?=base_url()?>perfiles/gestorZonas/gestorZona'>Zonas</a></li>
+                <li><a href='<?=base_url()?>perfiles/gestorZonasBalizas/gestorBlzZona'>Balizas por Zona</a></li>                  
               </ul>
-            </li>      
+            </li>   
+            <li><a href='<?=base_url()?>perfiles/gestorBalizas/gestorBlz'>Gesti&oacute;n de Balizas</a></li>                      
             <li class="divider"></li>
-            <li><a href='<?=base_url()?>gestion/gestornotificaciones/crud_gestornotificaciones'>Notificaciones</a></li>            
-           <li class="dropdown">            
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Estad&iacute;sticas <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">                
-                <li><a href='<?=base_url()?>estadisticas/estadisticausuario/crud_estadisticausuarios'>Usuarios</a></li>
-                 <li><a href='<?=base_url()?>estadisticas/estadisticaconv/crud_estconvocatorias'>Convocatorias Activas</a></li>
-                 <li><a href='<?=base_url()?>estadisticas/estadisticaconv/crud_estconvocatoriashis'>Convocatorias Hist&oacute;rico</a></li> 
-              </ul>
-            </li>
+            <li><a href='<?=base_url()?>perfiles/balizas/mostrarBlz'>Balizas</a></li>                      
+            <li><a href='<?=base_url()?>perfiles/zonas/mostrarZona'>Zonas</a></li> 
             <li class="divider"></li>
             <li class="dropdown">            
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Convocatorias <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-                <li><a href='<?=base_url()?>gestion/gestorconvusuario/crud_gestorconvactivas'>Activas</a></li>
-                <li><a href='<?=base_url()?>gestion/gestorconvusuario/crud_gestorconvnoactivas'>Hist&oacute;rico</a></li> 
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Estad&iacute;sticas <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href='<?=base_url()?>perfiles/gestorEstadisticas/GestEstTot'>Totales</a></li>
+                <li><a href='<?=base_url()?>perfiles/gestorEstadisticas/GestEstPub'>P&uacute;blicas</a></li>                  
               </ul>
-            </li>
+            </li>           
+            <li class="divider"></li>           
           </ul> 
           <ul class="nav navbar-nav navbar-right">
             <li><a href="<?=base_url()?>gestion/gestorusuarios/crud_cambiopasswordusuario">Cambio Password</a></li>
-            <li><a href="<?=base_url()?>ayuda">Ayuda</a></li>           
+            <li><a href="<?=base_url()?>ayuda">Ayuda</a></li>
           </ul>
           </li>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+    <br>
+    </body>
