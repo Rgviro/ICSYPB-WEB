@@ -51,8 +51,8 @@ $active_record = TRUE;
 
 /* Localhost */
 $db['localhost']['hostname'] = 'localhost';
-$db['localhost']['username'] = 'root';
-$db['localhost']['password'] = '';
+$db['localhost']['username'] = 'ICSYPB';
+$db['localhost']['password'] = 'ICSYPB';
 $db['localhost']['database'] = 'icsypbdb';
 $db['localhost']['dbdriver'] = 'mysql';
 $db['localhost']['dbprefix'] = '';

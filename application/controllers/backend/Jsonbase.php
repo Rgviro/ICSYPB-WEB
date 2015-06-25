@@ -7,9 +7,9 @@ class jsonbase extends CI_Controller {
     
     public function index()
     {
-      $server = "ctcloud.sytes.net";
-      $user = "root";
-      $pass = "";
+      $server = "localhost";
+      $user = "ICSYPB";
+      $pass = "ICSYPB";
       $bd = "icsypbdb";
 
 
