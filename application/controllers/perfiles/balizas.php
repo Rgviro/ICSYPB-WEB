@@ -41,19 +41,27 @@ class balizas extends CI_Controller {
 			    $crud->set_table('baliza');
 			    
 			    //Modificamos display de columnas	
-			    $crud->display_as('POSICION','POSICION');	     
 			    $crud->display_as('TEXTO_ID','DESCRIPCION');
-			    $crud->display_as('ID_CONTACTO','PERSONA');
+			    $crud->display_as('POSICION','POSICION');		   
+			    
 			    $crud->display_as('ESTROPEADO','ESTROPEADO');
-			    $crud->display_as('MAIL','EMAIL');
+			   //$crud->display_as('MAIL','EMAIL');
 		   		    //Establecemos relacion.
 			    //$crud->set_relation('ID_CONTACTO','USUARIO','USER');
-		
-			    //Nomber que aparece al lado de Añadir
-			    $crud->set_subject('baliza');	
+			    $crud->set_relation_n_n('CONTACTO','contactobaliza','usuario','IDBALIZA','IDUSUARIO','USER','IDRB');
+			     //Valores para el campo Estropeado
+			    $crud->field_type('ESTROPEADO','dropdown',
+			     		array(1 => 'SI', 0 => 'NO'));
 			    
-			    $crud->fields('TEXTO_ID','POSICION','ID_CONTACTO','EMAIL');
-			   
+			    $crud->fields('TEXTO_ID','POSICION','ID_CONTACTO');
+			   //Ocultamos las mac para que no salgan en el alta o modificacoin
+		    
+		    	$crud->change_field_type('MAC', 'password');
+		    
+		    
+		   		$crud->fields('TEXTO_ID','POSICION');
+
+
 			   //Deshabilitamoslos botones
 			    $crud->unset_delete();
 			    $crud->unset_edit();
@@ -97,7 +105,9 @@ class balizas extends CI_Controller {
 		    
 		    //Indicamos los campos obligatorios
 		  //   $crud->required_fields('MAC','TEXTO_ID','ID_CONTACTO','ESTROPEADO', 'MAIL' );
-	
+	       //Valores para el campo Estropeado
+			    $crud->field_type('ESTROPEADO','dropdown',
+			     		array(1 => 'SI', 0 => 'NO'));
 		    
 		
 		    

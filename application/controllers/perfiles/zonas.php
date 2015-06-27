@@ -58,7 +58,7 @@ class zonas extends CI_Controller {
 			    $output = $crud->render();
 			 
 			    $this->load->view('header.php');		    
-			    $this->load->view('perfiles/admin_menu.php');		    		    
+			    $this->load->view('perfiles/gestor_menu.php');		    		    
 	        	$this->load->view('vistaZonas.php',$output);       		
 	    		$this->load->view('footer.php');
 	    	}	    

@@ -154,6 +154,91 @@ class gestorBalizas extends CI_Controller {
     	}	    
     }
     
+//Asignacionde responsables a Balizas
+    public function gestorBlzUsuario()
+    {
+    	if ($this->session->userdata('perfil') != 'administrador') {
+			if ($this->session->userdata('perfil') != 'gestor') {
+				//redirect(base_url().'login');
+				$this->load->view('usuario_no_autorizado.php');
+							
+			}else {	    	
+			   $crud = new grocery_CRUD();
+		    
+		    	//Tema twitter bootstrap adaptativo
+		    	// desactivado de momento por que no filtra bien en algunos casos
+		    	//$crud->set_theme('twitter-bootstrap');    	
+		    	$crud->set_theme('datatables');   
+			     
+				//Indicamos la tabla
+			    $crud->set_table('contactobaliza');
+			    echo $this->session->userdata('id_usuario');
+			    //$crud->where('IDBALIZA','IDBALIZA IN ( SELECT IDBALIZA FROM balizasrutagestor WHERE GESTOR = ' & $this->session->userdata('id_usuario') & ')');
+			    //$crud->where('IDUSUARIO',$this->session->userdata('id_usuario'));
+			    //Modificamos display de columnas
+			    $crud->display_as('IDUSUARIO','Responsable');
+			    $crud->display_as('IDBALIZA','Baliza');
+			    
+		   		//Establecemos relacion.'{username} - {last_name} 
+		   		$crud->set_relation('IDBALIZA','baliza','TEXTO_ID');
+		   		$crud->set_relation('IDUSUARIO','usuario','USER');	   		
+		
+				$crud->columns('IDBALIZA','IDUSUARIO');
+
+			    //Nomber que aparece al lado de Añadir
+			    $crud->set_subject('Responsable de Baliza');
+			    
+			    $crud->fields('IDBALIZA','IDUSUARIO');
+		   
+			    //Deshabilitamos el boton borrar, solo hacemos borrado logico
+			    $crud->unset_delete();
+			    
+				//Renderizamos la vista 
+			    $output = $crud->render();
+			    $this->load->view('header.php');		    
+			    $this->load->view('perfiles/gestor_menu.php');		    		    
+	        	$this->load->view('gestorBalizas.php',$output);        		
+	    		$this->load->view('footer.php');
+			 		    
+	    	}	    
+						
+		}
+		else {
+    	
+		    $crud = new grocery_CRUD();
+		    
+	    	//Tema twitter bootstrap adaptativo
+	    	// desactivado de momento por que no filtra bien en algunos casos
+	    	//$crud->set_theme('twitter-bootstrap');    	
+	    	$crud->set_theme('datatables');   
+		     
+			//Indicamos la tabla
+		    $crud->set_table('contactobaliza');
+		    
+		    //Modificamos display de columnas
+		    $crud->display_as('IDUSUARIO','Responsable');
+		    $crud->display_as('IDBALIZA','Baliza');
+		   
+	   		//Establecemos relacion.'{username} - {last_name} 
+	   		$crud->set_relation('IDBALIZA','baliza','TEXTO_ID');
+	   		$crud->set_relation('IDUSUARIO','usuario','USER');	   		
+	
+			$crud->columns('IDBALIZA','IDUSUARIO');
+
+		    //Nomber que aparece al lado de Añadir
+		    $crud->set_subject('Responsable de Baliza');
+		    
+		    $crud->fields('IDBALIZA','IDUSUARIO');
+		    
+			//REnderizamos la vista 
+		    $output = $crud->render();
+		    $this->load->view('header.php');		    
+		    $this->load->view('perfiles/admin_menu.php');		    		    
+        	$this->load->view('gestorBalizas.php',$output);        		
+    		$this->load->view('footer.php');
+		 		    
+    	}	    
+    }    
       
 //Visualizacion de Balizas
     public function mostarBlz()

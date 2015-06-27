@@ -21,7 +21,13 @@
                 <li><a href='<?=base_url()?>perfiles/gestorZonasBalizas/gestorBlzZona'>Balizas por Zona</a></li>                  
               </ul>
             </li>   
-            <li><a href='<?=base_url()?>perfiles/gestorBalizas/gestorBlz'>Gesti&oacute;n de Balizas</a></li>                      
+            <li class="dropdown">            
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gesti&oacute;n de Balizas <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href='<?=base_url()?>perfiles/gestorBalizas/gestorBlz'>Balizas</a></li>
+                <li><a href='<?=base_url()?>perfiles/gestorBalizas/gestorBlzUsuario'>Responsable de Baliza</a></li>                 
+              </ul>
+            </li>                       
             <li class="divider"></li>
             <li><a href='<?=base_url()?>perfiles/balizas/mostrarBlz'>Balizas</a></li>                      
             <li><a href='<?=base_url()?>perfiles/zonas/mostrarZona'>Zonas</a></li> 
