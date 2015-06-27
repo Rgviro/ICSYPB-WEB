@@ -109,7 +109,8 @@ class balizas extends CI_Controller {
 			    $crud->field_type('ESTROPEADO','dropdown',
 			     		array(1 => 'SI', 0 => 'NO'));
 		    
-		
+			
+ 
 		    
 		   // $crud->fields('MAC','POSICION','TEXTO_ID','ID_CONTACTO','EMAIL');
 		   

@@ -32,7 +32,7 @@ table.tablesorter thead .field-sorting.desc_disabled { background: url('images/s
 
 .tablesorter tbody tr.active:hover td,
 .tablesorter tbody tr.active:hover th {
-	background-color: #333333 !important;
+	background-color: #3333AA !important;
 }
 
 .tablesorter-striped tbody tr.active:nth-child(odd) td,
