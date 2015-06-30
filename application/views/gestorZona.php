@@ -13,8 +13,8 @@
   <?php endforeach; ?>
 <!-- Texto principal -->
 <div class="container-fluid">
-  <h2> Gesti&oacute;n de usuarios </h2>
-  <P ALIGN=center>Creaci&oacute;n, modificaci&oacute;n y borrado de zonas.</P>
+  <h2> Gesti&oacute;n de gestores </h2>
+  <P ALIGN=center>Asignaci&oacute;n, modificaci&oacute;n y borrado gestores de zonas.</P>
 </div>
 <!-- Rendering CRUD -->
 <div class="container-fluid">

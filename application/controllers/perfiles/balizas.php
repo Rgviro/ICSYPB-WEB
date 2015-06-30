@@ -34,56 +34,8 @@ class balizas extends CI_Controller {
 	    	
 			    $crud = new grocery_CRUD();			    
 		    	//Tema twitter bootstrap adaptativo
-		    	// desactivado de momento por que no filtra bien en algunos casos
-		    	//$crud->set_theme('twitter-bootstrap');    	
-		    	$crud->set_theme('datatables');  			     
-				//Indicamos la tabla
-			    $crud->set_table('baliza');
-			    
-			    //Modificamos display de columnas	
-			    $crud->display_as('TEXTO_ID','DESCRIPCION');
-			    $crud->display_as('POSICION','POSICION');		   
-			    
-			    $crud->display_as('ESTROPEADO','ESTROPEADO');
-			   //$crud->display_as('MAIL','EMAIL');
-		   		    //Establecemos relacion.
-			    //$crud->set_relation('ID_CONTACTO','USUARIO','USER');
-			    $crud->set_relation_n_n('CONTACTO','contactobaliza','usuario','IDBALIZA','IDUSUARIO','USER','IDRB');
-			     //Valores para el campo Estropeado
-			    $crud->field_type('ESTROPEADO','dropdown',
-			     		array(1 => 'SI', 0 => 'NO'));
-			    
-			    $crud->fields('TEXTO_ID','POSICION','ID_CONTACTO');
-			   //Ocultamos las mac para que no salgan en el alta o modificacoin
-		    
-		    	$crud->change_field_type('MAC', 'password');
-		    
-		    
-		   		$crud->fields('TEXTO_ID','POSICION');
-
-
-			   //Deshabilitamoslos botones
-			    $crud->unset_delete();
-			    $crud->unset_edit();
-			    $crud->unset_add();
-			    $crud->unset_export();
-			    $crud->unset_print();
-			    
-				//REnderizamos la vista 
-			    $output = $crud->render();
-			    $this->load->view('header.php');		    
-			    $this->load->view('perfiles/gestor_menu.php');		    		    
-	        	$this->load->view('balizas.php',$output);       		
-	    		$this->load->view('footer.php');
-	    	}	    
-						
-		}else {
-    	
-		    $crud = new grocery_CRUD();
-		    
-	    	//Tema twitter bootstrap adaptativo
 	    	// desactivado de momento por que no filtra bien en algunos casos
-	    	//$crud->set_theme('twitter-bootstrap');    	
+	    	//$crud->set_theme('twitter-bootstrap');  	    		
 	    	$crud->set_theme('datatables');   
 		     
 			//Indicamos la tabla
@@ -100,7 +52,61 @@ class balizas extends CI_Controller {
 	   		    //Establecemos relacion.
 		    //$crud->set_relation('ID_CONTACTO','USUARIO','IDUSUARIO');
 	
-		    //Nomber que aparece al lado de Añadir
+		    //Nomber que aparece al lado de AÃ±adir
+		    $crud->set_subject('baliza');
+		    
+		    //Indicamos los campos obligatorios
+		  //   $crud->required_fields('MAC','TEXTO_ID','ID_CONTACTO','ESTROPEADO', 'MAIL' );
+	       //Valores para el campo Estropeado
+			    $crud->field_type('ESTROPEADO','dropdown',
+			     		array(1 => 'SI', 0 => 'NO'));
+		    
+			
+ 
+		    
+		   // $crud->fields('MAC','POSICION','TEXTO_ID','ID_CONTACTO','EMAIL');
+		   
+		     
+		   
+		   //Deshabilitamoslos botones
+		    $crud->unset_delete();
+		    $crud->unset_edit();
+		    $crud->unset_add();
+		    $crud->unset_export();
+		    $crud->unset_print();
+			    
+				//REnderizamos la vista 
+			    $output = $crud->render();
+			    $this->load->view('header.php');		    
+			    $this->load->view('perfiles/gestor_menu.php');		    		    
+	        	$this->load->view('balizas.php',$output);       		
+	    		$this->load->view('footer.php');
+	    	}	    
+						
+		}else {
+    	
+		    $crud = new grocery_CRUD();
+		    
+	    	//Tema twitter bootstrap adaptativo
+	    	// desactivado de momento por que no filtra bien en algunos casos
+	    	//$crud->set_theme('twitter-bootstrap');  	    		
+	    	$crud->set_theme('datatables');   
+		     
+			//Indicamos la tabla
+		    $crud->set_table('baliza');
+		    
+		    //Modificamos display de columnas
+		    
+		    $crud->display_as('MAC','MAC');
+		    $crud->display_as('POSICION','POSICION');	     
+		    $crud->display_as('TEXTO_ID','DESCRIPCION');
+		    $crud->display_as('ID_CONTACTO','PERSONA');
+		    $crud->display_as('ESTROPEADO','ESTROPEADO');
+		    $crud->display_as('MAIL','EMAIL');
+	   		    //Establecemos relacion.
+		    //$crud->set_relation('ID_CONTACTO','USUARIO','IDUSUARIO');
+	
+		    //Nomber que aparece al lado de AÃ±adir
 		    $crud->set_subject('baliza');
 		    
 		    //Indicamos los campos obligatorios
@@ -165,7 +171,7 @@ class balizas extends CI_Controller {
 		    //Establecemos relacion.
 		    //$crud->set_relation('ID_CONTACTO','USUARIO','IDUSUARIO');
 	
-		    //Nomber que aparece al lado de Añadir
+		    //Nomber que aparece al lado de AÃ±adir
 		    $crud->set_subject('baliza');
 		    
 		    //Indicamos los campos obligatorios

@@ -41,17 +41,15 @@ class gestorBalizas extends CI_Controller {
 			    $crud->set_table('baliza');
 			    
 			    //Modificamos display de columnas
-			    $crud->display_as('TEXTO_ID','DESCRIPCION');
-			   // $crud->display_as('MAC','DIRECCION MAC');
+			    $crud->display_as('TEXTO_ID','DESCRIPCION');			   
 			    $crud->display_as('POSICION','POSICION');	
-			    $crud->display_as('IDBALIZA','PERSONA');			   
+			    //$crud->display_as('IDBALIZA','USER');			   
 			    $crud->display_as('EMAIL','EMAIL');
 		   		  
-		   		//Establecemos relacion.
-		   		$crud->set_relation('IDBALIZA','usuario','USER','IDBALIZA IN (SELECT B.IDUSUARIO, B.USER FROM contactobaliza A, usuario B WHERE A.IDUSUARIO = B.IDUSUARIO)');
-		   		//$crud->set_relation('IDBALIZA','usuario','MAIL','IDBALIZA IN (SELECT B.IDUSUARIO, B.USER FROM contactobaliza A, usuario B WHERE A.IDUSUARIO = B.IDUSUARIO)');
-		   		
-				$crud->columns('TEXTO_ID','POSICION','USER','ESTROPEADO','EMAIL','IDRB');
+		   		//Establecemos relacion.a
+		   		//$crud->set_relation('IDBALIZA','usuario','USER','IDBALIZA IN (SELECT A.IDBALIZA, B.USER FROM contactobaliza as A, usuario as B WHERE A.IDUSUARIO = B.IDUSUARIO)');
+				 $crud->set_relation_n_n('USER', 'contactobaliza', 'usuario', 'IDBALIZA', 'IDUSUARIO', 'USER',null);  
+				$crud->columns('TEXTO_ID','POSICION','USER','ESTROPEADO');
 
 			    //Nomber que aparece al lado de Añadir
 			    $crud->set_subject('Baliza');
@@ -60,9 +58,8 @@ class gestorBalizas extends CI_Controller {
 			    $crud->field_type('ESTROPEADO','dropdown',
 			     		array(1 => 'SI', 0 => 'NO'));
 
-
 			    
-			    $crud->fields('TEXTO_ID','POSICION','USER','ESTROPEADO','EMAIL');
+			    $crud->fields('TEXTO_ID','POSICION','IDBALIZA','ESTROPEADO','EMAIL');
 			    //Indicamos los campos obligatorios
 			  //   $crud->required_fields('MAC','TEXTO_ID','ID_CONTACTO','ESTROPEADO', 'MAIL' );
 		   
@@ -94,20 +91,14 @@ class gestorBalizas extends CI_Controller {
 		    $crud->display_as('TEXTO_ID','DESCRIPCION');
 		    $crud->display_as('MAC','DIRECCION MAC');
 		    $crud->display_as('POSICION','POSICION');		   
-		    $crud->display_as('IDBALIZA','USUARIO - EMAIL');
+		    $crud->display_as('IDBALIZA','USUARIO');
 		   // $crud->display_as('ESTROPEADO','ESTROPEADO');
 		    $crud->display_as('EMAIL','EMAIL');
 	   		  
 	   		//Establecemos relacion.'{username} - {last_name} 
-	   		//$crud->set_relation('IDUSUARIO','USUARIOS','{NOMBRE} {APELLIDO1}','IDUSUARIO IN (SELECT B.IDUSUARIO FROM REL_GESTOR_GRUPO A, USUARIOS B WHERE A.IDUSUARIO = B.IDUSUARIO)');
-	   		$crud->set_relation('IDBALIZA','usuario','{USER} - {EMAIL}','IDBALIZA IN (SELECT B.IDUSUARIO, B.USER FROM contactobaliza A, usuario B WHERE A.IDUSUARIO = B.IDUSUARIO)');
-	   		//$crud->set_relation('IDBALIZA','usuario','EMAIL','IDBALIZA IN (SELECT B.IDUSUARIO, B.USER FROM contactobaliza A, usuario B WHERE A.IDUSUARIO = B.IDUSUARIO)');
-	   		
-	   		//$crud->set_relation('IDBALIZA','GRUPOS','NOMBRE','IDGRUPO IN (SELECT DISTINCT(IDGRUPO) FROM REL_USU_GRUPO)');
-		    //$crud->set_relation_n_n('IDBALIZA','contactobaliza','usuario','IDBALIZA','IDUSUARIO','USER','IDRB');
-		    //$crud->set_relation_n_n('IDBALIZA','contactobaliza','usuario','IDBALIZA','IDUSUARIO','MAIL','IDRB');
-		 	//$crud->set_relation('IDBALIZA','balizausuario','EMAIL');
-	
+	   		//$crud->set_relation('IDBALIZA','usuario','{USER} - {EMAIL}','IDBALIZA IN (SELECT B.IDUSUARIO, B.USER FROM contactobaliza A, usuario B WHERE A.IDUSUARIO = B.IDUSUARIO)');
+	   		$crud->set_relation('IDBALIZA','usuario','USER','IDBALIZA IN (SELECT B.IDUSUARIO, B.USER FROM contactobaliza A, usuario B WHERE A.IDUSUARIO = B.IDUSUARIO)');
+
 			$crud->columns('TEXTO_ID','MAC','POSICION','IDBALIZA','ESTROPEADO');
 
 		    //Nomber que aparece al lado de Añadir
@@ -116,30 +107,11 @@ class gestorBalizas extends CI_Controller {
 		    //Valores para el campo Estropeado
 		    $crud->field_type('ESTROPEADO','dropdown',
 		     		array(1 => 'SI', 0 => 'NO'));
-		    $crud->field_type('PERSONA','dropdown',
-			     		array(1 => 'SI', 0 => 'NO'));
+		   $crud->field_type('USUARIO','dropdown',			     		array(1 => 'SI', 0 => 'NO'));
 
 		    
-		    $crud->fields('TEXTO_ID','MAC','POSICION','USUARIO - EMAIL','ESTROPEADO');
-		    //Indicamos los campos obligatorios
-		  //   $crud->required_fields('MAC','TEXTO_ID','ID_CONTACTO','ESTROPEADO', 'MAIL' );
-	
-		    
-		    //Validaciones sobre los campos
-		  //   $crud->set_rules('MAC','Direccion MAC','trim|required|min_length[17]|max_length[20]');
-		   //  $crud->set_rules('POSICION','POSICION GPS','trim|required|min_length[10]|max_length[20]');
-		  //   $crud->set_rules('TEXTO_ID','Descripcion','trim|max_length[30]');		    
-		 //   $crud->set_rules('ID_CONTACTO','Persona Contacto','required');
-		  //   $crud->set_rules('EMAIL','Email','trim|required|valid_email');		    
-		    	    
-	    
-		    
-		    
-		    
-		    
-		    
-		   // $crud->fields('MAC','POSICION','TEXTO_ID','ID_CONTACTO','EMAIL');
-		   
+		    $crud->fields('TEXTO_ID','MAC','POSICION','ESTROPEADO');
+		  		   
 		     
 		    //Deshabilitamos el boton borrar, solo hacemos borrado logico
 		    $crud->unset_delete();

@@ -35,45 +35,54 @@ class gestorZonasBalizas extends CI_Controller {
 				$this->load->view('usuario_no_autorizado.php');
 						
 			}else {
-	    	
-			    $crud = new grocery_CRUD();
-			    
-		    	//Tema twitter bootstrap adaptativo
-		    	// desactivado de momento por que no filtra bien en algunos casos
-		    	//$crud->set_theme('twitter-bootstrap');    	
-		    	$crud->set_theme('datatables');   
-			     
-				//Indicamos la tabla
-			    $crud->set_table('rutabaliza');
-			          
-			   //Modificamos display de columnas
-			    
-			    $crud->display_as('IDRUTA','RUTA');			    
-			    $crud->display_as('IDBALIZA','BALIZA');
-			    $crud->display_as('ORDEN','POSICION');	
+	    	$crud = new grocery_CRUD();
+			    //Tema twitter bootstrap adaptativo
+	    	// desactivado de momento por que no filtra bien en algunos casos
+	    	//$crud->set_theme('twitter-bootstrap');    	
+	    	$crud->set_theme('datatables');   
+		     
+			//Indicamos la tabla
+		    $crud->set_table('rutabaliza');
+		    
+		    //Modificamos display de columnas
+		    
+		   // $crud->display_as('IDRB','ID');
+		    $crud->display_as('IDRUTA','RUTA');
+		    $crud->display_as('IDBALIZA','BALIZA');
+		    $crud->display_as('ORDEN','POSICION');	      
 		   
-			    //Establecemos relacion.
-			  //  $crud->set_relation('IDRUTA','ruta','DESCRIPCION');
-			 	$crud->set_relation('IDBALIZA','baliza','TEXTO_ID');
-			 	$crud->set_relation('IDRUTA','rutagestor','IDUSUARIO');
+	   $iduser=$this->session->userdata('id_usuario');
+	   //echo $iduser;
+		    //Establecemos relacion.
+		    $crud->set_relation('IDRUTA','ruta','DESCRIPCION');
+		 	$crud->set_relation('IDBALIZA','baliza','TEXTO_ID');
+		    //Nomber que aparece al lado de Añadir
+		    $crud->set_subject('Baliza a Ruta');
+		    
+		    //Indicamos los campos obligatorios
+		    $crud->required_fields('IDRUTA');
+			$crud->required_fields('IDBALIZA');
+		    
+		    //Validaciones sobre los campos 		    
+	       $crud->fields('IDRUTA','IDBALIZA','ORDEN');
+		   
+			 	//$crud->set_relation('IDRUTA','rutagestor','IDUSUARIO');
+                //$crud->set_relation('IDRUTA','rutagestor','{username} ( {last_name} {first_name} )');
+				//$crud->where('SELECT IDUSUARIO FROM rutagestor, rutabaliza WHERE rutagestor.IDRUTA = rutabaliza.IDRUTA',$this->session->userdata('id_usuario'));
+			    
 
-				$crud->where('IDUSUARIO',$this->session->userdata('id_usuario'));
-			   
 				
-			    //Nomber que aparece al lado de Añadir
-			    $crud->set_subject('Baliza a Ruta');
-			    
-			    //Indicamos los campos obligatorios
-			    $crud->required_fields('IDRUTA');
-				$crud->required_fields('IDBALIZA');
-			    
-			    //Validaciones sobre los campos    
-			   
-			    
-		    $crud->fields('IDRUTA','IDBALIZA','ORDEN');
+
+
+			    //$crud->where('IDRUTA',$finalArray); 
+			    //$crud->where('IDRUTA',$this->session->userdata('id_usuario')); 
+				
+			    //Establecemos relacion.
+			    //$crud->set_relation('IDRUTA','ruta','DESCRIPCION');
+			 	
 			    
 			    //Deshabilitamos el boton borrar, solo hacemos borrado logico
-			    //$crud->unset_delete();
+			    $crud->unset_delete();
 			    
 				//REnderizamos la vista 
 			    $output = $crud->render();
@@ -114,10 +123,8 @@ class gestorZonasBalizas extends CI_Controller {
 		    $crud->required_fields('IDRUTA');
 			$crud->required_fields('IDBALIZA');
 		    
-		    //Validaciones sobre los campos    
-		   
-		    
-	    $crud->fields('IDRUTA','IDBALIZA','ORDEN');
+		    //Validaciones sobre los campos 		    
+	       $crud->fields('IDRUTA','IDBALIZA','ORDEN');
 		    
 		    //Deshabilitamos el boton borrar, solo hacemos borrado logico
 		    //$crud->unset_delete();
@@ -131,8 +138,4 @@ class gestorZonasBalizas extends CI_Controller {
     		$this->load->view('footer.php');
     	}	    
     }
-      
-    
-  
-   
 }

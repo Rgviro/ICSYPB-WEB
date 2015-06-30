@@ -49,7 +49,7 @@ class gestorEstadisticas extends CI_Controller {
 				//REnderizamos la vista 
 
 			    $output = $crud->render();
-			    echo $this->session->userdata('perfil') ;
+			   // echo $this->session->userdata('perfil') ;
 			    $this->load->view('header.php');		    
 			    $this->load->view('perfiles/usuario_menu.php');		    		    
 	        	$this->load->view('gestorestadisticas.php',$output);     		
@@ -76,12 +76,11 @@ class gestorEstadisticas extends CI_Controller {
 			    $crud->unset_print();
 				//REnderizamos la vista 
 			    $output = $crud->render();
-			    echo $this->session->userdata('perfil') ;
+			    //echo $this->session->userdata('perfil') ;
 			    $this->load->view('header.php');		    
 			    $this->load->view('perfiles/gestor_menu.php');		    		    
 	        	$this->load->view('gestorestadisticas.php',$output);     		
-	    		$this->load->view('footer.php');
-			    
+	    		$this->load->view('footer.php');			    
 	    	}	    
 						
 		}else {
@@ -118,6 +117,27 @@ class gestorEstadisticas extends CI_Controller {
  
     	if ($this->session->userdata('perfil') != 'administrador') {
 			if ($this->session->userdata('perfil') != 'gestor') {
+				//------------------
+				$Select = $this->input->post('select[]');
+				$Cont = 0;
+				 
+				foreach ($Select as $Item) {
+				 
+				 
+				if ($Cont == 0) {
+				 
+				$this->db->like('category',$Item);
+				 
+				}else{
+				 
+				$this->db->or_like('category',$Item);
+				 
+				}
+				 
+				$Cont++;
+				 
+				}
+				//-----------------
 				$crud = new grocery_CRUD();
 			    
 		    	//Tema twitter bootstrap adaptativo
@@ -138,8 +158,9 @@ class gestorEstadisticas extends CI_Controller {
 				//REnderizamos la vista 
 			    $output = $crud->render();
 			 
-			    $this->load->view('header.php');		    
-			    $this->load->view('perfiles/usuario_menu.php');		    		    
+			    $this->load->view('header.php');	
+			    $this->load->view('perfiles/inputbox.php');	    
+			    //$this->load->view('perfiles/usuario_menu.php');		    		    
 	        	$this->load->view('gestorestadisticas.php',$output);     		
 	    		$this->load->view('footer.php');
 							
