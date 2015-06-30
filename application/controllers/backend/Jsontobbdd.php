@@ -18,7 +18,7 @@ if($_POST){
 $misdatosjson =json_decode($_POST["datos"])
 foreach ($misdatosjson as $dato ) {
 	//generamos la consulta
-	$sql = "INSERT INTO tracking (MACUSUSARIO,ID_RUTA,ID_BALIZA,MAC_BALIZA,FECHA) values($datos[0],$datos[1],$datos[2],$datos[3],$datos[4]) ";
+	$sql = "INSERT INTO tracking (MAC_USUSARIO,ID_RUTA,ID_BALIZA,MAC_BALIZA,DESC_BALIZA,POSICION,FECHA,IDTRACKPUB) values($datos[0],$datos[1],$datos[2],$datos[3],$datos[4],$datos[5],$datos[6],$datos[7]) ";
 	mysqli_set_charset($conexion, "utf8"); //formato de datos utf8
 	$result = mysqli_query($conexion, $sql);
 
