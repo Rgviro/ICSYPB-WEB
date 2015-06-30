@@ -18,9 +18,8 @@
             <li class="divider"></li>
             <li class="dropdown">            
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Estad&iacute;sticas <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href='<?=base_url()?>perfiles/gestorEstadisticas/GestEstTot'>Totales</a></li>
-                <li><a href='<?=base_url()?>perfiles/gestorEstadisticas/GestEstPub'>P&uacute;blicas</a></li>                  
+              <ul class="dropdown-menu" role="menu">                
+                <li><a href='<?=base_url()?>perfiles/gestorEstadisticasPub/GestEstPubIni'>P&uacute;blicas</a></li>                  
               </ul>
             </li>           
             <li class="divider"></li>           

@@ -1,6 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  
-class gestorEstadisticas extends CI_Controller {
+class gestorEstadisticasPub extends CI_Controller {
  
     function __construct()
     {
@@ -21,36 +21,40 @@ class gestorEstadisticas extends CI_Controller {
         echo "<h1>Estadisticas totales</h1>";//Just an example to ensure that we get into the function
         die();
     }
-/Seleccion de trackpublico
+//Seleccion de trackpublico
  public function GestEstPubIni(){
-
- }
+if ($this->session->userdata('perfil') != 'administrador') {
+			if ($this->session->userdata('perfil') != 'gestor') {
+			    $this->load->view('header.php');	
+			    $this->load->view('perfiles/inputbox.php');	    
+			    //$this->load->view('perfiles/usuario_menu.php');		    		    
+	        	$this->load->view('gestorestadisticas.php',$output);     		
+	    		$this->load->view('footer.php');
+							
+			}else {
+			    $this->load->view('header.php');		    
+			    $this->load->view('perfiles/gestor_menu.php');		    		    
+	        	$this->load->view('perfiles/inputbox.php');	     		
+	    		$this->load->view('footer.php');
+	    	}	    						
+		}else {   			 
+		    $this->load->view('header.php');		    
+		    $this->load->view('perfiles/admin_menu.php');		    		    
+        	$this->load->view('perfiles/inputbox.php');	      		
+    		$this->load->view('footer.php');
+    	}	    
+    }
 
     //estadisticas totales
-    public function GestEstPub(){
- 
+    public function GestEstPub(){    	
+
+ 		$variable = $_GET["trackid"];
     	if ($this->session->userdata('perfil') != 'administrador') {
 			if ($this->session->userdata('perfil') != 'gestor') {
 				//------------------
-				$Select = $this->input->post('select[]');
-				$Cont = 0;
-				 
-				foreach ($Select as $Item) {
-				 
-				 
-				if ($Cont == 0) {
-				 
-				$this->db->like('category',$Item);
-				 
-				}else{
-				 
-				$this->db->or_like('category',$Item);
-				 
-				}
-				 
-				$Cont++;
-				 
-				}
+				echo "hola";
+				echo $variable; //"Variable $fname: $HTTP_GET_VARS["fname"] <br>";
+				
 				//-----------------
 				$crud = new grocery_CRUD();
 			    
@@ -61,7 +65,7 @@ class gestorEstadisticas extends CI_Controller {
 			     
 				//Indicamos la tabla
 			    $crud->set_table('tracking');
-			    $crud->where('IDTRACKPUB',!null);
+			    $crud->where('IDTRACKPUB',$variable);
 
 			    //Deshabilitamoslos botones
 			    $crud->unset_delete();
@@ -71,7 +75,7 @@ class gestorEstadisticas extends CI_Controller {
 			    $crud->unset_print();
 				//REnderizamos la vista 
 			    $output = $crud->render();
-			 
+			
 			    $this->load->view('header.php');	
 			    $this->load->view('perfiles/inputbox.php');	    
 			    //$this->load->view('perfiles/usuario_menu.php');		    		    
@@ -81,7 +85,7 @@ class gestorEstadisticas extends CI_Controller {
 			}else {
 	    	
 			    $crud = new grocery_CRUD();
-			    
+			   
 		    	//Tema twitter bootstrap adaptativo
 		    	// desactivado de momento por que no filtra bien en algunos casos
 		    	//$crud->set_theme('twitter-bootstrap');    	
@@ -89,7 +93,7 @@ class gestorEstadisticas extends CI_Controller {
 			     
 				//Indicamos la tabla
 			    $crud->set_table('tracking');
-			    $crud->where('IDTRACKPUB',!null);
+			    $crud->where('IDTRACKPUB',$variable);
 
 			    //Deshabilitamoslos botones
 			    $crud->unset_delete();
@@ -99,7 +103,8 @@ class gestorEstadisticas extends CI_Controller {
 			    $crud->unset_print();
 				//REnderizamos la vista 
 			    $output = $crud->render();
-			 
+			  echo "hola";
+				echo $variable;
 			    $this->load->view('header.php');		    
 			    $this->load->view('perfiles/gestor_menu.php');		    		    
 	        	$this->load->view('gestorestadisticas.php',$output);     		
@@ -117,7 +122,7 @@ class gestorEstadisticas extends CI_Controller {
 		     
 			//Indicamos la tabla
 		    $crud->set_table('tracking');
-		    $crud->where('IDTRACKPUB',!null);
+		    $crud->where('IDTRACKPUB',$variable);
 
 		    //Deshabilitamoslos botones
 		    $crud->unset_delete();

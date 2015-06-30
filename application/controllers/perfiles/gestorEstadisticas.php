@@ -66,8 +66,12 @@ class gestorEstadisticas extends CI_Controller {
 			     
 				//Indicamos la tabla
 			    $crud->set_table('tracking');
-			   
+			     $crud->display_as('ID_RUTA','RUTA');	
+			    $crud->set_relation('ID_RUTA','ruta','DESCRIPCION');
 
+			    $crud->change_field_type('MAC_BALIZA', 'password');
+			   // $crud->where('IDUSUARIO',$this->session->userdata('id_usuario'));
+                //$crud->set_relation_n_n('UGESTOR', 'rutagestor', 'usuario', 'IDRUTA', 'IDUSUARIO', 'USER',null);  
 			    //Deshabilitamoslos botones
 			    $crud->unset_delete();
 			    $crud->unset_edit();
@@ -117,26 +121,7 @@ class gestorEstadisticas extends CI_Controller {
  
     	if ($this->session->userdata('perfil') != 'administrador') {
 			if ($this->session->userdata('perfil') != 'gestor') {
-				//------------------
-				$Select = $this->input->post('select[]');
-				$Cont = 0;
-				 
-				foreach ($Select as $Item) {
-				 
-				 
-				if ($Cont == 0) {
-				 
-				$this->db->like('category',$Item);
-				 
-				}else{
-				 
-				$this->db->or_like('category',$Item);
-				 
-				}
-				 
-				$Cont++;
-				 
-				}
+				
 				//-----------------
 				$crud = new grocery_CRUD();
 			    
@@ -147,7 +132,7 @@ class gestorEstadisticas extends CI_Controller {
 			     
 				//Indicamos la tabla
 			    $crud->set_table('tracking');
-			    $crud->where('IDTRACKPUB',!null);
+			    //$crud->where('IDTRACKPUB',null);
 
 			    //Deshabilitamoslos botones
 			    $crud->unset_delete();
@@ -175,7 +160,7 @@ class gestorEstadisticas extends CI_Controller {
 			     
 				//Indicamos la tabla
 			    $crud->set_table('tracking');
-			    $crud->where('IDTRACKPUB',!null);
+			   // $crud->where('IDTRACKPUB',null);
 
 			    //Deshabilitamoslos botones
 			    $crud->unset_delete();
@@ -203,7 +188,7 @@ class gestorEstadisticas extends CI_Controller {
 		     
 			//Indicamos la tabla
 		    $crud->set_table('tracking');
-		    $crud->where('IDTRACKPUB',!null);
+		    $crud->where('IDTRACKPUB !=','');
 
 		    //Deshabilitamoslos botones
 		    $crud->unset_delete();

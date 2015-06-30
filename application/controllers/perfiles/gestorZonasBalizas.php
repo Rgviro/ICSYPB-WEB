@@ -65,21 +65,6 @@ class gestorZonasBalizas extends CI_Controller {
 		    
 		    //Validaciones sobre los campos 		    
 	       $crud->fields('IDRUTA','IDBALIZA','ORDEN');
-		   
-			 	//$crud->set_relation('IDRUTA','rutagestor','IDUSUARIO');
-                //$crud->set_relation('IDRUTA','rutagestor','{username} ( {last_name} {first_name} )');
-				//$crud->where('SELECT IDUSUARIO FROM rutagestor, rutabaliza WHERE rutagestor.IDRUTA = rutabaliza.IDRUTA',$this->session->userdata('id_usuario'));
-			    
-
-				
-
-
-			    //$crud->where('IDRUTA',$finalArray); 
-			    //$crud->where('IDRUTA',$this->session->userdata('id_usuario')); 
-				
-			    //Establecemos relacion.
-			    //$crud->set_relation('IDRUTA','ruta','DESCRIPCION');
-			 	
 			    
 			    //Deshabilitamos el boton borrar, solo hacemos borrado logico
 			    $crud->unset_delete();
