@@ -9,9 +9,10 @@
 	<body>
 		<div class="container_12">
 			<div class="grid_12">
+			</br>
+			</br>
 				<h1 style="text-align: center">NO ESTAS AUTORIZADO A ACCEDER A ESA INFORMACION!!!</h1>
-				<?=anchor(base_url().'login/index', 'Iniciar sesion')?>
-				<?=anchor(base_url().'login/logout_ci', 'Cerrar sesion')?>
+				
 			</div>
 		</div>	
 	</body>

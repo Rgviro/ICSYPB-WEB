@@ -108,7 +108,7 @@ class gestorBalizas extends CI_Controller {
 			     		array(1 => 'SI', 0 => 'NO'));
 
 			    
-			    $crud->fields('TEXTO_ID','POSICION','IDBALIZA','ESTROPEADO','EMAIL');
+			    $crud->fields('MAC','TEXTO_ID','POSICION','ESTROPEADO');
 			    //Indicamos los campos obligatorios
 			  //   $crud->required_fields('MAC','TEXTO_ID','ID_CONTACTO','ESTROPEADO', 'MAIL' );
 		   

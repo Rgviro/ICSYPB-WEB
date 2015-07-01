@@ -86,7 +86,8 @@ class gestorUsuarios extends CI_Controller {
 		    
 		    
 		    $crud->fields('USER','NOMBRE','APELLIDO1','APELLIDO2','IDTIPO','EMAIL','TFNO', 'PASSWD');
-		    
+		    $crud->callback_before_insert(array($this,'cb_before_insert'));
+		    $crud->callback_before_update(array($this,'cb_before_insert'));
 		    //Deshabilitamos el boton borrar, solo hacemos borrado logico
 		    $crud->unset_delete();
 		    
@@ -104,6 +105,17 @@ class gestorUsuarios extends CI_Controller {
     	}	    
     }
       
+       function cb_before_insert($post_array)
+  {   
+    $post_array['PASSWD'] =sha1($post_array['PASSWD']);
+    return $post_array;
+  }
+
+         function cb_before_update($post_array)
+  {   
+    $post_array['PASSWD'] =sha1($post_array['PASSWD']);
+    return $post_array;
+  }
     //Asignacion de gestores
     public function gestorGsr()
     {

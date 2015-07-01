@@ -31,8 +31,11 @@ class zonas extends CI_Controller {
     	if ($this->session->userdata('perfil') != 'administrador') {
 			if ($this->session->userdata('perfil') != 'gestor') {
 				//redirect(base_url().'login');
-				$this->load->view('usuario_no_autorizado.php');
-							
+				
+				 $this->load->view('header.php');		    
+			    $this->load->view('perfiles/usuario_menu.php');		    		    
+	        	$this->load->view('usuario_no_autorizado.php');      		
+	    		$this->load->view('footer.php');			
 			}else {
 	    	
 			    $crud = new grocery_CRUD();

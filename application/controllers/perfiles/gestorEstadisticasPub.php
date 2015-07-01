@@ -25,10 +25,11 @@ class gestorEstadisticasPub extends CI_Controller {
  public function GestEstPubIni(){
 if ($this->session->userdata('perfil') != 'administrador') {
 			if ($this->session->userdata('perfil') != 'gestor') {
-			    $this->load->view('header.php');	
+			    $this->load->view('header.php');
+			    $this->load->view('perfiles/usuario_menu.php');	
 			    $this->load->view('perfiles/inputbox.php');	    
 			    //$this->load->view('perfiles/usuario_menu.php');		    		    
-	        	$this->load->view('gestorestadisticas.php',$output);     		
+	        	//$this->load->view('gestorestadisticas.php',$output);     		
 	    		$this->load->view('footer.php');
 							
 			}else {
