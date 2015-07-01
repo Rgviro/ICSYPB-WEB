@@ -53,7 +53,7 @@ if ($this->session->userdata('perfil') != 'administrador') {
     	if ($this->session->userdata('perfil') != 'administrador') {
 			if ($this->session->userdata('perfil') != 'gestor') {
 				//------------------
-				echo "hola";
+				//echo "hola";
 				echo $variable; //"Variable $fname: $HTTP_GET_VARS["fname"] <br>";
 				
 				//-----------------
