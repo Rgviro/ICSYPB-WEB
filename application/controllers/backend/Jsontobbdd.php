@@ -27,12 +27,17 @@ class jsontobbdd extends CI_Controller {
 				//echo $dato[1];
 				//print_r($dato);
 				//generamos la consulta
-				$sql = "INSERT INTO tracking (MAC_USUSARIO,ID_RUTA,ID_BALIZA,MAC_BALIZA,DESC_BALIZA,POSICION,FECHA,IDTRACKPUB) values('" .$dato["mac_usuario"]. "'," .$dato["id_ruta"]. "," .$dato["id_baliza"]. ",'" .$dato["mac_baliza"]. "','" .$dato["desc_baliza"]. "','" .$dato["posicion"]. "','". $dato["fecha"]. "')";
-				mysqli_set_charset($conexion, "utf8"); //formato de datos utf8
+				$sql = "INSERT INTO tracking (MAC_USUARIO,ID_RUTA,ID_BALIZA,MAC_BALIZA,DESC_BALIZA,POSICION,FECHA) values('" .$dato["mac_usuario"]. "'," .$dato["id_ruta"]. "," .$dato["id_baliza"]. ",'" .$dato["mac_baliza"]. "','" .$dato["desc_baliza"]. "','" .$dato["posicion"]. "','". $dato["fecha"]. "')";
+				echo $sql;
+				//mysqli_set_charset($conexion, "utf8"); //formato de datos utf8
 			 	// DEBUG print_r($sql);	
 				$result = mysqli_query($conexion, $sql);
 			}
 		}
+		//desconectamos la base de datos*/
+$close = mysqli_close($conexion) 
+or die("Ha sucedido un error inexperado en la desconexion de la base de datos");
+  
 }
 
 }
