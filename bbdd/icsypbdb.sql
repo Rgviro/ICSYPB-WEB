@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-07-2015 a las 00:54:24
+-- Tiempo de generación: 01-07-2015 a las 06:13:11
 -- Versión del servidor: 5.6.24
 -- Versión de PHP: 5.6.8
 
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `baliza` (
   `POSICION` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `TEXTO_ID` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `ESTROPEADO` int(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `baliza`
@@ -44,7 +44,8 @@ INSERT INTO `baliza` (`IDBALIZA`, `MAC`, `POSICION`, `TEXTO_ID`, `ESTROPEADO`) V
 (3, '99:99:99:99:99:AA', '1', 'Baliza Prueba 2', 0),
 (4, '58:B0:35:82:1B:69', '2', 'Macbook CCVals', 0),
 (6, 'AA:BB:CC:DD:EE:FF', '3', 'prueba de baliza sin usuario', 0),
-(7, 'AC:F7:F3:94:DD:51', '3', 'Xiaomi Carlos', 0);
+(7, 'AC:F7:F3:94:DD:51', '3', 'Xiaomi Carlos', 0),
+(8, '4C:3C:16:CC:64:3E', '1', 'Galaxy S4 RGV', 0);
 
 -- --------------------------------------------------------
 
@@ -115,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `contactobaliza` (
   `IDRB` int(11) NOT NULL,
   `IDUSUARIO` int(50) NOT NULL,
   `IDBALIZA` varchar(50) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `contactobaliza`
@@ -126,7 +127,8 @@ INSERT INTO `contactobaliza` (`IDRB`, `IDUSUARIO`, `IDBALIZA`) VALUES
 (3, 3, '3'),
 (4, 2, '4'),
 (5, 5, '6'),
-(7, 2, '7');
+(7, 2, '7'),
+(8, 1, '8');
 
 -- --------------------------------------------------------
 
@@ -188,7 +190,7 @@ CREATE TABLE IF NOT EXISTS `rutabaliza` (
   `IDRUTA` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `IDBALIZA` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `ORDEN` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `rutabaliza`
@@ -203,7 +205,8 @@ INSERT INTO `rutabaliza` (`IDRB`, `IDRUTA`, `IDBALIZA`, `ORDEN`) VALUES
 (6, '2', '1', 5),
 (7, '3', '3', 3),
 (9, '2', '4', 5),
-(10, '2', '7', 6);
+(10, '2', '7', 6),
+(11, '2', '8', 8);
 
 -- --------------------------------------------------------
 
@@ -262,7 +265,7 @@ CREATE TABLE IF NOT EXISTS `tracking` (
   `IDTRACKPUB` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
   `DESC_BALIZA` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `POSICION` int(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `tracking`
@@ -271,7 +274,22 @@ CREATE TABLE IF NOT EXISTS `tracking` (
 INSERT INTO `tracking` (`IDTRACK`, `MAC_USUARIO`, `ID_RUTA`, `ID_BALIZA`, `MAC_BALIZA`, `FECHA`, `IDTRACKPUB`, `DESC_BALIZA`, `POSICION`) VALUES
 (1, '94:51:03:1C:C7:3C', 2, 2, '99:99:99:99:99:99', '30/06/2015 19:06:20', 'pepe', '', 0),
 (2, '94:51:03:1C:C7:3C', 2, 2, '99:99:99:99:99:99', '30/06/2015 19:06:20', 'juan', '', 0),
-(3, '99:99:99:99:99:99', 1, 1, '94:51:03:1C:C7:3C', '30/06/2015 19:06:20', '', '', 0);
+(3, '99:99:99:99:99:99', 1, 1, '94:51:03:1C:C7:3C', '30/06/2015 19:06:20', '', '', 0),
+(4, 'D4:87:D8:6D:91:36', 2, 8, '4C:3C:16:CC:64:3E', '01/07/2015 02:21:53', NULL, 'Galaxy S4 RGV', 1),
+(5, 'D4:87:D8:6D:91:36', 2, 8, '4C:3C:16:CC:64:3E', '01/07/2015 02:21:53', NULL, 'Galaxy S4 RGV', 1),
+(6, 'D4:87:D8:6D:91:36', 2, 8, '4C:3C:16:CC:64:3E', '01/07/2015 02:21:53', NULL, 'Galaxy S4 RGV', 1),
+(7, 'D4:87:D8:6D:91:36', 2, 8, '4C:3C:16:CC:64:3E', '01/07/2015 02:21:53', NULL, 'Galaxy S4 RGV', 1),
+(8, 'D4:87:D8:6D:91:36', 2, 8, '4C:3C:16:CC:64:3E', '01/07/2015 02:21:53', NULL, 'Galaxy S4 RGV', 1),
+(9, 'D4:87:D8:6D:91:36', 2, 8, '4C:3C:16:CC:64:3E', '01/07/2015 02:21:53', NULL, 'Galaxy S4 RGV', 1),
+(10, 'D4:87:D8:6D:91:36', 2, 8, '4C:3C:16:CC:64:3E', '01/07/2015 02:21:53', NULL, 'Galaxy S4 RGV', 1),
+(11, 'D4:87:D8:6D:91:36', 2, 8, '4C:3C:16:CC:64:3E', '01/07/2015 02:21:53', NULL, 'Galaxy S4 RGV', 1),
+(12, 'D4:87:D8:6D:91:36', 2, 8, '4C:3C:16:CC:64:3E', '01/07/2015 02:21:53', NULL, 'Galaxy S4 RGV', 1),
+(13, 'D4:87:D8:6D:91:36', 2, 8, '4C:3C:16:CC:64:3E', '01/07/2015 02:21:53', NULL, 'Galaxy S4 RGV', 1),
+(14, 'D4:87:D8:6D:91:36', 2, 8, '4C:3C:16:CC:64:3E', '01/07/2015 02:21:53', NULL, 'Galaxy S4 RGV', 1),
+(15, 'D4:87:D8:6D:91:36', 2, 8, '4C:3C:16:CC:64:3E', '01/07/2015 02:21:53', NULL, 'Galaxy S4 RGV', 1),
+(16, 'D4:87:D8:6D:91:36', 2, 8, '4C:3C:16:CC:64:3E', '01/07/2015 02:21:53', NULL, 'Galaxy S4 RGV', 1),
+(17, 'D4:87:D8:6D:91:36', 2, 8, '4C:3C:16:CC:64:3E', '01/07/2015 02:21:53', NULL, 'Galaxy S4 RGV', 1),
+(18, 'D4:87:D8:6D:91:36', 2, 4, '58:B0:35:82:1B:69', '01/07/2015 05:06:56', NULL, 'Macbook CCVals', 2);
 
 -- --------------------------------------------------------
 
@@ -299,8 +317,8 @@ INSERT INTO `usuario` (`IDUSUARIO`, `USER`, `NOMBRE`, `APELLIDO1`, `APELLIDO2`, 
 (1, 'Rafa', 'Rafael', 'Garrido', 'Viro', 1, 'rgviro@hotmail.com', '651083287', '4eeef8fe6b93589e035ec15fe261b8aaefa258c7'),
 (2, 'Krono', 'Carlos', 'Crisóstomo', 'Vals', 1, 'ccvals@gmail.com', '678904079', '1234'),
 (3, 'RafaG', 'Rafael', 'Garrido', 'Viro', 2, 'rgviro@hotmail.com', '651083287', '4eeef8fe6b93589e035ec15fe261b8aaefa258c7'),
-(4, 'RafaU', 'Rafael', 'Garrido', 'Viro', 3, 'rgviro@hotmail.com', '651083287', '4eeef8fe6b93589e035ec15fe261b8aaefa258c7'),
-(5, 'Sergio', 'Sergio', 'Rios', 'Aguilar', 1, 'srios@upsam.es', '666555444', 'ICSYPB');
+(4, 'RafaU', 'Rafael', 'Garrido', 'Viro', 3, 'rgviro@hotmail.com', '651083287', '32c20d0b481f9818a20c085d6df8438837103b69'),
+(5, 'Sergio', 'Sergio', 'Rios', 'Aguilar', 1, 'srios@upsam.es', '666555444', '4eeef8fe6b93589e035ec15fe261b8aaefa258c7');
 
 -- --------------------------------------------------------
 
@@ -439,12 +457,12 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `baliza`
 --
 ALTER TABLE `baliza`
-  MODIFY `IDBALIZA` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `IDBALIZA` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `contactobaliza`
 --
 ALTER TABLE `contactobaliza`
-  MODIFY `IDRB` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `IDRB` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `dispositivo`
 --
@@ -459,7 +477,7 @@ ALTER TABLE `ruta`
 -- AUTO_INCREMENT de la tabla `rutabaliza`
 --
 ALTER TABLE `rutabaliza`
-  MODIFY `IDRB` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `IDRB` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT de la tabla `rutagestor`
 --
@@ -474,7 +492,7 @@ ALTER TABLE `tipousuario`
 -- AUTO_INCREMENT de la tabla `tracking`
 --
 ALTER TABLE `tracking`
-  MODIFY `IDTRACK` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `IDTRACK` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --

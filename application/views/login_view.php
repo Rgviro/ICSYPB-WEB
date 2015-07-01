@@ -14,7 +14,11 @@
 </head>
 <body>
 
-<p><img class="center-block" src="assets/Images/btrack.png"   width="100"  height="93" align="middle" alt="ICSYPB" longdesc="assets/Images/btrack.png"  /></p>
+<p>
+ <a href="http://ctcloud.sytes.net/icsypb.apk">
+ <img class="center-block" src="assets/Images/btrack.png"   width="100"  height="93" align="middle" alt="ICSYPB" longdesc="assets/Images/btrack.png" />
+</a> 
+ </p>
 <?php
 $username = array('name' => 'username', 'placeholder' => 'nombre de usuario');
 $password = array('name' => 'password',	'placeholder' => 'introduce tu password');
