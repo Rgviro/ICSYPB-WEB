@@ -27,7 +27,7 @@ class jsontobbdd extends CI_Controller {
 				//echo $dato[1];
 				//print_r($dato);
 				//generamos la consulta
-				$sql = "INSERT INTO tracking (MAC_USUARIO,ID_RUTA,ID_BALIZA,MAC_BALIZA,DESC_BALIZA,POSICION,FECHA) values('" .$dato["mac_usuario"]. "'," .$dato["id_ruta"]. "," .$dato["id_baliza"]. ",'" .$dato["mac_baliza"]. "','" .$dato["desc_baliza"]. "','" .$dato["posicion"]. "','". $dato["fecha"]. "')";
+				$sql = "INSERT INTO tracking (MAC_USUARIO,ID_RUTA,ID_BALIZA,MAC_BALIZA,DESC_BALIZA,POSICION,FECHA,IDTRACKPUB) values('" .$dato["mac_usuario"]. "'," .$dato["id_ruta"]. "," .$dato["id_baliza"]. ",'" .$dato["mac_baliza"]. "','" .$dato["desc_baliza"]. "','" .$dato["posicion"]. "','". $dato["fecha"]. "','". $dato["idtrackpub"]. "')";
 				echo $sql;
 				//mysqli_set_charset($conexion, "utf8"); //formato de datos utf8
 			 	// DEBUG print_r($sql);	
