@@ -89,7 +89,7 @@ if ($this->session->userdata('perfil') != 'administrador') {
 			   // $this->load->view('perfiles/inputbox.php');	    
 			    $this->load->view('perfiles/usuario_menu.php');		    		    
 	        	$this->load->view('gestorestadisticas.php',$output); 
-	        	$this->load->view('perfiles/OutJson.php');		
+	        	$this->load->view('perfiles/outjson.php');		
 	    		$this->load->view('footer.php');
 							
 			}else {
@@ -119,7 +119,7 @@ if ($this->session->userdata('perfil') != 'administrador') {
 			    $this->load->view('header.php');		    
 			    $this->load->view('perfiles/gestor_menu.php');		    		    
 	        	$this->load->view('gestorestadisticas.php',$output); 
-	        	$this->load->view('perfiles/OutJson.php');    		
+	        	$this->load->view('perfiles/outjson.php');    		
 	    		$this->load->view('footer.php');
 	    	}	    
 						
@@ -148,7 +148,7 @@ if ($this->session->userdata('perfil') != 'administrador') {
 		    $this->load->view('header.php');		    
 		    $this->load->view('perfiles/admin_menu.php');		    		    
         	$this->load->view('gestorestadisticas.php',$output);  
-        	$this->load->view('perfiles/OutJson.php');   		
+        	$this->load->view('perfiles/outjson.php');   		
     		$this->load->view('footer.php');
     	}	
     	if(isset($_POST['boton'])){
