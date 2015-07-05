@@ -120,7 +120,7 @@ if ($this->session->userdata('perfil') != 'administrador') {
 			    $this->load->view('perfiles/gestor_menu.php');		    		    
 	        	$this->load->view('gestorestadisticas.php',$output); 
 	        	$this->load->view('perfiles/outjson.php');    		
-	    		$this->load->view('footer.php');
+	    		$this->load->view('footer2.php');
 	    	}	    
 						
 		}else {
