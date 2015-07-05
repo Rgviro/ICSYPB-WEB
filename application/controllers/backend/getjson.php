@@ -1,6 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  
-class gestorEstadisticasPub extends CI_Controller {
+class getJson extends CI_Controller {
 
 	function __construct()
     {
