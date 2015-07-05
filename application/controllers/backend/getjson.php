@@ -1,32 +1,17 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+class getjson extends CI_Controller {
+
+    public function index(){
+	if (!(empty($_GET))) {
  
-class getJson extends CI_Controller {
+    	$variable = $_GET["trackid"];
+	$server = "localhost";
+  	$user = "ICSYPB";
+  	$pass = "ICSYPB";
+  	$bd = "icsypbdb";
 
-	function __construct()
-    {
-        parent::__construct();
-		// Bibliotecas CodeIgniter necesarias
-		$this->load->database();
-		$this->load->helper('url');
-		// Biblioteca GroceryCRUD
-		$this->load->library('grocery_CRUD');
-		$this->load->library(array('session'));		
-
-		//cagamos la session
-		$this->load->library('session');
-    } 
-
-    public function index()
-    {
-        
-        $variable = $_GET["trackid"];
- 		$idt =$variable;
-		$server = "localhost";
-      	$user = "ICSYPB";
-      	$pass = "ICSYPB";
-      	$bd = "icsypbdb";
-		
-      	//$variable = $_GET["trackid"];
+		//$variable = $_GET["trackid"];
 		//Creamos la conexión
 		$conexion = mysqli_connect($server, $user, $pass,$bd) 
 		or die("Ha sucedido un error inexperado en la conexion de la base de datos");
@@ -52,7 +37,7 @@ class getJson extends CI_Controller {
 		 }
 		 //$rutas[] = array( 'id'=> $buffer_rec_id_ant, 'descripcion'=> $buffer_rec_name_ant, 'balizas'=>$baliza);  //genera el array de la ruta con sus balizas
 		     
-		  //desconectamos la base de datos*/
+	
 		$close = mysqli_close($conexion) 
 		or die("Ha sucedido un error inexperado en la desconexion de la base de datos");			  
 		 
@@ -61,7 +46,6 @@ class getJson extends CI_Controller {
 		echo $json_string;
 		die();
 
-		} 
-
-    }
-
+}
+}
+}
